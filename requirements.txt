@@ -2,3 +2,5 @@ pandas
 huggingface_hub
 notion-client
 python-dotenv
+google-generativeai
+google-generativeai
