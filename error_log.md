@@ -4,7 +4,7 @@
 Agent-Intelligence-OS
 
 ## Date
-March 29, 2026
+March 30, 2026
 
 ## Summary
 This log records the latest runtime/sync issues seen in production runs, root causes, and the applied fixes after the final stability pass.
@@ -74,14 +74,15 @@ This log records the latest runtime/sync issues seen in production runs, root ca
   - Made `Industry` type-adaptive (`multi_select` or `select`).
   - Send `Quantization` only when the property exists.
 
-### 8) Gemini SDK deprecation warning
+### 8) Gemini SDK deprecation warning (resolved)
 - Symptom:
   - FutureWarning for `google.generativeai` deprecation.
 - Root cause:
   - Current implementation uses deprecated Gemini SDK package.
 - Resolution:
-  - Non-blocking for runtime; script still executes.
-  - Pending enhancement: migrate to `google.genai` SDK.
+  - Migrated to `google-genai` package.
+  - Replaced import with `from google import genai`.
+  - Centralized client initialization with `client = genai.Client(api_key=GEMINI_API_KEY)`.
 
 ### 9) Architect enrichment not filling Docker/Gumroad columns
 - Symptom:
@@ -111,16 +112,24 @@ This log records the latest runtime/sync issues seen in production runs, root ca
 - Resolution:
   - `_build_rich_text_blocks` now strictly chunks to `<= 2000` characters per block.
 
-### 12) Gemini model availability mismatch (active)
+### 12) Gemini model availability mismatch (historical)
 - Symptom:
-  - `404 models/gemini-1.5-flash is not found for API version v1beta...`
+  - `404 models/gemini-1.5-flash-latest is not found for API version v1beta...`
 - Root cause:
   - Model alias availability differs by Gemini endpoint/version/project.
 - Resolution:
-  - Added model fallback sequence:
-    - `gemini-1.5-flash`
-    - `gemini-1.5-flash-latest`
-  - If all fail, sync continues without crashing.
+  - Legacy 1.5 fallback sequence removed during SDK migration.
+  - Architect path now calls `client.models.generate_content(model="gemini-2.0-flash", contents=...)`.
+  - If generation fails, sync continues without crashing.
+
+### 13) Gemini 2.0 lifecycle risk (active)
+- Symptom:
+  - Potential future interruptions when using `gemini-2.0-flash` as default architect model.
+- Root cause:
+  - As of March 2026 model catalog guidance, Gemini 2.0 family is listed under previous/deprecated models.
+- Resolution:
+  - Kept `gemini-2.0-flash` in code for current controlled rollout.
+  - Production recommendation documented: migrate baseline to `gemini-2.5-flash` or `gemini-2.5-pro`.
 
 ## Current Status
 - Sync script compiles and executes successfully.
@@ -128,9 +137,12 @@ This log records the latest runtime/sync issues seen in production runs, root ca
 - Architect-Force flow is implemented (existing top candidates are processed for enrichment updates).
 - Progress logging now uses `[SKIPPED]`, `[ENRICHING EXISTING]`, and `[CREATED NEW]` for clear 09:00 run visibility.
 - Startup environment warnings now surface missing `HF_TOKEN` / `GEMINI_API_KEY`.
+- Gemini SDK migration is complete (`google-generativeai` -> `google-genai`).
+- Architect generation path uses `google.genai` client API.
 - Current observed run state:
-  - New records can still be added (`Added 23 new records` observed).
-  - Existing architect updates may remain `Updated 0` when Gemini generation fails due to model 404.
+  - Latest verified run completed successfully (`EXIT:0`).
+  - New records were added (`Added 23 new records`).
+  - Existing architect updates may remain `Updated 0` when generation fails or there are no empty target columns.
 
 ## Prevention Notes
 - Prefer `NOTION_DATA_SOURCE_ID` for `notion-client>=3.0.0`.
@@ -141,4 +153,5 @@ This log records the latest runtime/sync issues seen in production runs, root ca
 - Keep Notion rich_text chunks at `<= 2000` chars.
 - Handle `APIResponseError` separately for clear 400/429 diagnostics.
 - Verify Gemini model availability in the target API version and project before production runs.
+- Prefer stable production model IDs (2.5+ family) over older generation aliases.
 - Rotate exposed secrets immediately if `.env` values were shared.

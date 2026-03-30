@@ -1,6 +1,6 @@
 # Agent-Intelligence-OS Setup Guide (Current Status)
 
-This guide reflects the current implementation in main.py as of March 29, 2026.
+This guide reflects the current implementation in main.py as of March 30, 2026.
 
 ## Current Engine Capabilities
 - Pulls top Hugging Face agent models (sorted by downloads).
@@ -10,8 +10,13 @@ This guide reflects the current implementation in main.py as of March 29, 2026.
    - Industry supports select or multi_select automatically.
    - Quantization is sent only if that property exists.
 - Architect mode (Gemini):
-   - Runs only for top candidates (Review Score >= 4.0), limited by MODEL_LIMIT (default 4).
-   - Generates Docker/no-code setup, freelance gig copy, golden prompt, objection handling, and Gumroad copy.
+   - Runs for top candidates (Review Score >= 0.0), limited by MODEL_LIMIT (default 4).
+   - Generates Docker/no-code setup, freelance gig copy, objection handling, and Gumroad copy.
+   - Current code path uses google-genai client.models.generate_content with model gemini-2.0-flash.
+- De-dup + force-enrichment behavior:
+   - Existing non-architect rows are skipped.
+   - Existing architect rows are updated when Docker Payload/Gumroad Copy are blank.
+   - New rows are created normally.
 - Notion protection:
    - 1 second rate limit between page writes.
    - Per-row error handling without stopping whole sync.
@@ -32,12 +37,32 @@ python -m venv .venv
 .\.venv\Scripts\python.exe -m pip install -r requirements.txt
 ```
 
+If you are upgrading from legacy Gemini SDK packages, run:
+```powershell
+pip uninstall google-generativeai -y
+pip install google-genai
+```
+
+If `pip` is not found in PowerShell, use the virtual environment Python explicitly:
+```powershell
+& ".\.venv\Scripts\python.exe" -m pip uninstall google-generativeai -y
+& ".\.venv\Scripts\python.exe" -m pip install google-genai
+```
+
+Verify installation:
+```powershell
+& ".\.venv\Scripts\python.exe" -c "from google import genai; import importlib.metadata as m; print('google-genai', m.version('google-genai'))"
+```
+
+Latest verified state in this workspace:
+- `google-genai 1.69.0`
+
 Required libraries:
 - pandas
 - huggingface_hub
 - notion-client
 - python-dotenv
-- google-generativeai
+- google-genai
 
 ## Step 4: Configure .env
 Create or update .env in project root:
@@ -86,7 +111,7 @@ Notes:
 Expected output:
 - [FETCH] stage starts.
 - data source is resolved.
-- rows are either skipped (already exists) or created.
+- rows are logged as [SKIPPED], [ENRICHING EXISTING], or [CREATED NEW].
 - final completion summary is printed.
 
 ## Step 7: Validate health logs
@@ -95,7 +120,8 @@ Get-Content .\metadata\factory_health.log -Tail 80
 ```
 
 Use logs to confirm:
-- [ARCHITECT] rows vs [SYNC-ONLY] rows
+- [ELITE-ARCHITECT] rows vs [SYNC-ONLY] rows
+- [SKIPPED] / [ENRICHING EXISTING] / [CREATED NEW] outcomes
 - Notion API responses
 - sync completion counts
 
@@ -128,9 +154,21 @@ Fix: current script sends Quantization only if property exists.
 Cause: all fetched model IDs already exist.
 Fix: normal behavior; review logs for skipped rows.
 
-### Issue: Gemini deprecation warning
-Current package may warn that google.generativeai is deprecated.
-Fix option: migrate to google.genai SDK in a future update.
+### Issue: Legacy Gemini SDK still installed
+Cause: environment still contains google-generativeai.
+Fix: uninstall google-generativeai and install google-genai.
+
+### Issue: `pip` command not found in PowerShell
+Cause: terminal PATH does not expose pip even though virtual environment exists.
+Fix: run package operations via `.\.venv\Scripts\python.exe -m pip`.
+
+### Issue: Gemini model 404 during enrichment
+Cause: configured Gemini alias is not available for the current project/API version.
+Fix: verify available Gemini models for your key/project and update model aliases; sync continues even when enrichment fails.
+
+### Issue: gemini-2.0-flash lifecycle risk (March 2026)
+Cause: gemini-2.0 family is listed under previous/deprecated models in current Gemini docs.
+Fix: for production-grade agentic pipelines, move to gemini-2.5-flash (throughput/cost) or gemini-2.5-pro (deeper reasoning) when you are ready to change model baseline.
 
 ## Security and Maintenance
 - Rotate tokens/keys immediately if exposed.

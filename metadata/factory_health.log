@@ -3711,3 +3711,811 @@ httpx.ConnectError: [WinError 10053] An established connection was aborted by th
 2026-03-29 22:54:57,253 - INFO - [CREATED NEW] Successfully created page for: mradermacher/AgentDoG-FG-Qwen2.5-7B-i1-GGUF
 2026-03-29 22:54:58,257 - INFO - [COMPLETE] Sync Complete! Added 23 new records. Updated 0 existing records.
 2026-03-29 22:54:58,257 - INFO - [SUCCESS] Script execution completed!
+2026-03-30 15:40:50,099 - INFO - [START] Intelligence Scout Phase 1.1...
+2026-03-30 15:40:50,127 - INFO - Initiating Hugging Face data fetch...
+2026-03-30 15:40:50,427 - ERROR - [FATAL] Error: [Errno 11001] getaddrinfo failed
+Traceback (most recent call last):
+  File "C:\Users\My Computer\Agent-Intelligence-OS\.venv\Lib\site-packages\httpx\_transports\default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "C:\Users\My Computer\Agent-Intelligence-OS\.venv\Lib\site-packages\httpx\_transports\default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\My Computer\Agent-Intelligence-OS\.venv\Lib\site-packages\httpcore\_sync\connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "C:\Users\My Computer\Agent-Intelligence-OS\.venv\Lib\site-packages\httpcore\_sync\connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\My Computer\Agent-Intelligence-OS\.venv\Lib\site-packages\httpcore\_sync\connection.py", line 101, in handle_request
+    raise exc
+  File "C:\Users\My Computer\Agent-Intelligence-OS\.venv\Lib\site-packages\httpcore\_sync\connection.py", line 78, in handle_request
+    stream = self._connect(request)
+             ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\My Computer\Agent-Intelligence-OS\.venv\Lib\site-packages\httpcore\_sync\connection.py", line 124, in _connect
+    stream = self._network_backend.connect_tcp(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\My Computer\Agent-Intelligence-OS\.venv\Lib\site-packages\httpcore\_backends\sync.py", line 207, in connect_tcp
+    with map_exceptions(exc_map):
+  File "C:\Users\My Computer\AppData\Local\Programs\Python\Python311\Lib\contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "C:\Users\My Computer\Agent-Intelligence-OS\.venv\Lib\site-packages\httpcore\_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\My Computer\Agent-Intelligence-OS\main.py", line 701, in <module>
+    cleaned_df = fetch_and_clean_data()
+                 ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\My Computer\Agent-Intelligence-OS\main.py", line 435, in fetch_and_clean_data
+    for m in models:
+  File "C:\Users\My Computer\Agent-Intelligence-OS\.venv\Lib\site-packages\huggingface_hub\hf_api.py", line 2402, in list_models
+    for item in items:
+  File "C:\Users\My Computer\Agent-Intelligence-OS\.venv\Lib\site-packages\huggingface_hub\utils\_pagination.py", line 36, in paginate
+    r = session.get(path, params=params, headers=headers)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\My Computer\Agent-Intelligence-OS\.venv\Lib\site-packages\httpx\_client.py", line 1053, in get
+    return self.request(
+           ^^^^^^^^^^^^^
+  File "C:\Users\My Computer\Agent-Intelligence-OS\.venv\Lib\site-packages\httpx\_client.py", line 825, in request
+    return self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\My Computer\Agent-Intelligence-OS\.venv\Lib\site-packages\httpx\_client.py", line 914, in send
+    response = self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\My Computer\Agent-Intelligence-OS\.venv\Lib\site-packages\httpx\_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\My Computer\Agent-Intelligence-OS\.venv\Lib\site-packages\httpx\_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\My Computer\Agent-Intelligence-OS\.venv\Lib\site-packages\httpx\_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\My Computer\Agent-Intelligence-OS\.venv\Lib\site-packages\httpx\_transports\default.py", line 249, in handle_request
+    with map_httpcore_exceptions():
+  File "C:\Users\My Computer\AppData\Local\Programs\Python\Python311\Lib\contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "C:\Users\My Computer\Agent-Intelligence-OS\.venv\Lib\site-packages\httpx\_transports\default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: [Errno 11001] getaddrinfo failed
+2026-03-30 16:55:57,285 - INFO - [START] Intelligence Scout Phase 1.1...
+2026-03-30 16:55:57,285 - INFO - Initiating Hugging Face data fetch...
+2026-03-30 16:55:58,319 - INFO - HTTP Request: GET https://huggingface.co/api/models?filter=agent&sort=downloads&limit=50 "HTTP/1.1 200 OK"
+2026-03-30 16:55:58,456 - INFO - Industry matched: data -> Data Science
+2026-03-30 16:55:58,456 - INFO - Quantization detected: AWQ
+2026-03-30 16:55:58,457 - INFO - Review score calculated: 0.04102924799249751 (likes=21, downloads=511829)
+2026-03-30 16:55:58,457 - INFO - Processed model: bullpoint/Qwen3-Coder-Next-AWQ-4bit
+2026-03-30 16:55:58,457 - INFO - No industry keyword match; using 'Others'
+2026-03-30 16:55:58,458 - INFO - Context window detected: 6053
+2026-03-30 16:55:58,458 - INFO - Review score calculated: 5.0 (likes=2328, downloads=319691)
+2026-03-30 16:55:58,458 - INFO - Processed model: nvidia/personaplex-7b-v1
+2026-03-30 16:55:58,458 - INFO - Industry matched: image -> Computer Vision (CV)
+2026-03-30 16:55:58,459 - INFO - Context window detected: 7491
+2026-03-30 16:55:58,459 - INFO - Review score calculated: 0.8883563341872572 (likes=258, downloads=290423)
+2026-03-30 16:55:58,459 - INFO - Processed model: moonshotai/Kimi-VL-A3B-Instruct
+2026-03-30 16:55:58,459 - INFO - Industry matched: data -> Data Science
+2026-03-30 16:55:58,460 - INFO - Review score calculated: 0.026500479216999172 (likes=6, downloads=226410)
+2026-03-30 16:55:58,460 - INFO - Processed model: SWE-bench/SWE-agent-LM-7B
+2026-03-30 16:55:58,460 - INFO - Industry matched: data -> Data Science
+2026-03-30 16:55:58,461 - INFO - Quantization detected: GGUF
+2026-03-30 16:55:58,461 - INFO - Review score calculated: 0.13969894876541053 (likes=28, downloads=200430)
+2026-03-30 16:55:58,461 - INFO - Processed model: mradermacher/Crow-9B-Opus-4.6-Distill-Heretic_Qwen3.5-GGUF
+2026-03-30 16:55:58,461 - INFO - Industry matched: image -> Computer Vision (CV)
+2026-03-30 16:55:58,462 - INFO - Context window detected: 820
+2026-03-30 16:55:58,462 - INFO - Review score calculated: 2.9025533084415365 (likes=433, downloads=149178)
+2026-03-30 16:55:58,462 - INFO - Processed model: zai-org/AutoGLM-Phone-9B
+2026-03-30 16:55:58,462 - INFO - Industry matched: image -> Computer Vision (CV)
+2026-03-30 16:55:58,463 - INFO - Quantization detected: GGUF
+2026-03-30 16:55:58,463 - INFO - Context window detected: 9677
+2026-03-30 16:55:58,463 - INFO - Review score calculated: 0.31712292370193873 (likes=37, downloads=116673)
+2026-03-30 16:55:58,463 - INFO - Processed model: janhq/Jan-v2-VL-high-gguf
+2026-03-30 16:55:58,464 - INFO - Industry matched: data -> Data Science
+2026-03-30 16:55:58,464 - INFO - Quantization detected: GGUF
+2026-03-30 16:55:58,464 - INFO - Review score calculated: 2.362411409572141 (likes=243, downloads=102860)
+2026-03-30 16:55:58,464 - INFO - Processed model: Crownelius/Crow-9B-HERETIC-4.6
+2026-03-30 16:55:58,465 - INFO - No industry keyword match; using 'Others'
+2026-03-30 16:55:58,465 - INFO - Quantization detected: GGUF
+2026-03-30 16:55:58,465 - INFO - Review score calculated: 2.801435735814605 (likes=224, downloads=79958)
+2026-03-30 16:55:58,465 - INFO - Processed model: Tesslate/OmniCoder-9B-GGUF
+2026-03-30 16:55:58,466 - INFO - Industry matched: generation -> Creative Arts
+2026-03-30 16:55:58,466 - INFO - Quantization detected: GGUF
+2026-03-30 16:55:58,466 - INFO - Review score calculated: 0.09936406995230525 (likes=4, downloads=40255)
+2026-03-30 16:55:58,466 - INFO - Processed model: geoffmunn/Qwen3-4B-f16
+2026-03-30 16:55:58,466 - INFO - Industry matched: image -> Computer Vision (CV)
+2026-03-30 16:55:58,467 - INFO - Quantization detected: GGUF
+2026-03-30 16:55:58,467 - INFO - Context window detected: 9677
+2026-03-30 16:55:58,467 - INFO - Review score calculated: 0.734548252824513 (likes=21, downloads=28588)
+2026-03-30 16:55:58,467 - INFO - Processed model: janhq/Jan-v2-VL-med-gguf
+2026-03-30 16:55:58,468 - INFO - Industry matched: generation -> Creative Arts
+2026-03-30 16:55:58,468 - INFO - Quantization detected: GGUF
+2026-03-30 16:55:58,468 - INFO - Review score calculated: 0.03517658646404953 (likes=1, downloads=28427)
+2026-03-30 16:55:58,468 - INFO - Processed model: geoffmunn/Qwen3-14B-f16
+2026-03-30 16:55:58,469 - INFO - Industry matched: image -> Computer Vision (CV)
+2026-03-30 16:55:58,469 - INFO - Review score calculated: 5.0 (likes=530, downloads=28179)
+2026-03-30 16:55:58,469 - INFO - Processed model: Tesslate/OmniCoder-9B
+2026-03-30 16:55:58,470 - INFO - Industry matched: generation -> Creative Arts
+2026-03-30 16:55:58,470 - INFO - Quantization detected: GGUF
+2026-03-30 16:55:58,470 - INFO - Review score calculated: 2.010771992818672 (likes=56, downloads=27849)
+2026-03-30 16:55:58,470 - INFO - Processed model: janhq/Jan-code-4b-gguf
+2026-03-30 16:55:58,471 - INFO - No industry keyword match; using 'Others'
+2026-03-30 16:55:58,471 - INFO - Quantization detected: GGUF
+2026-03-30 16:55:58,471 - INFO - Review score calculated: 0.4441976679622432 (likes=12, downloads=27014)
+2026-03-30 16:55:58,472 - INFO - Processed model: LocoreMind/LocoOperator-4B-GGUF
+2026-03-30 16:55:58,472 - INFO - Industry matched: data -> Data Science
+2026-03-30 16:55:58,472 - INFO - Quantization detected: GGUF
+2026-03-30 16:55:58,472 - INFO - Review score calculated: 0.3456768785377868 (likes=8, downloads=23142)
+2026-03-30 16:55:58,473 - INFO - Processed model: mradermacher/Crow-9B-Opus-4.6-Distill-Heretic_Qwen3.5-i1-GGUF
+2026-03-30 16:55:58,473 - INFO - Industry matched: data -> Data Science
+2026-03-30 16:55:58,473 - INFO - Quantization detected: GGUF
+2026-03-30 16:55:58,474 - INFO - Review score calculated: 1.8806035425322545 (likes=43, downloads=22864)
+2026-03-30 16:55:58,476 - INFO - Processed model: Crownelius/Crow-4B-Opus-4.6-Distill-Heretic_Qwen3.5
+2026-03-30 16:55:58,477 - INFO - Industry matched: data -> Data Science
+2026-03-30 16:55:58,477 - INFO - Quantization detected: AWQ
+2026-03-30 16:55:58,478 - INFO - Review score calculated: 2.0438898450946645 (likes=38, downloads=18591)
+2026-03-30 16:55:58,478 - INFO - Processed model: mratsim/MiniMax-M2.5-BF16-INT4-AWQ
+2026-03-30 16:55:58,481 - INFO - Industry matched: generation -> Creative Arts
+2026-03-30 16:55:58,481 - INFO - Quantization detected: GGUF
+2026-03-30 16:55:58,481 - INFO - Review score calculated: 5.0 (likes=207, downloads=15589)
+2026-03-30 16:55:58,481 - INFO - Processed model: LocoreMind/LocoOperator-4B
+2026-03-30 16:55:58,482 - INFO - No industry keyword match; using 'Others'
+2026-03-30 16:55:58,482 - INFO - Quantization detected: GGUF
+2026-03-30 16:55:58,482 - INFO - Review score calculated: 0.4668222740913638 (likes=7, downloads=14994)
+2026-03-30 16:55:58,483 - INFO - Processed model: mradermacher/MiroThinker-1.7-mini-i1-GGUF
+2026-03-30 16:55:58,483 - INFO - Industry matched: generation -> Creative Arts
+2026-03-30 16:55:58,483 - INFO - Quantization detected: GGUF
+2026-03-30 16:55:58,483 - INFO - Review score calculated: 1.2860817376393257 (likes=18, downloads=13995)
+2026-03-30 16:55:58,484 - INFO - Processed model: bartowski/Tesslate_OmniCoder-9B-GGUF
+2026-03-30 16:55:58,485 - INFO - Industry matched: image -> Computer Vision (CV)
+2026-03-30 16:55:58,486 - INFO - Review score calculated: 0.0 (likes=0, downloads=12618)
+2026-03-30 16:55:58,486 - INFO - Processed model: cyankiwi/OmniCoder-9B-AWQ-BF16-INT4
+2026-03-30 16:55:58,486 - INFO - No industry keyword match; using 'Others'
+2026-03-30 16:55:58,487 - INFO - Quantization detected: GGUF
+2026-03-30 16:55:58,487 - INFO - Review score calculated: 0.0852587603376247 (likes=1, downloads=11728)
+2026-03-30 16:55:58,488 - INFO - Processed model: mradermacher/OpenSWE-72B-i1-GGUF
+2026-03-30 16:55:58,488 - INFO - Industry matched: image -> Computer Vision (CV)
+2026-03-30 16:55:58,489 - INFO - Review score calculated: 0.2673082063619353 (likes=3, downloads=11222)
+2026-03-30 16:55:58,489 - INFO - Processed model: cyankiwi/OmniCoder-9B-AWQ-4bit
+2026-03-30 16:55:58,489 - INFO - Industry matched: data -> Data Science
+2026-03-30 16:55:58,489 - INFO - Quantization detected: GGUF
+2026-03-30 16:55:58,493 - INFO - Review score calculated: 1.0945273631840797 (likes=11, downloads=10049)
+2026-03-30 16:55:58,493 - INFO - Processed model: mradermacher/Crow-4B-Opus-4.6-Distill-Heretic_Qwen3.5-i1-GGUF
+2026-03-30 16:55:58,493 - INFO - Industry matched: data -> Data Science
+2026-03-30 16:55:58,493 - INFO - Quantization detected: AWQ
+2026-03-30 16:55:58,493 - INFO - Review score calculated: 1.8043303929430634 (likes=18, downloads=9975)
+2026-03-30 16:55:58,493 - INFO - Processed model: mratsim/MiniMax-M2.5-FP8-INT4-AWQ
+2026-03-30 16:55:58,495 - INFO - Industry matched: image -> Computer Vision (CV)
+2026-03-30 16:55:58,495 - INFO - Quantization detected: GGUF
+2026-03-30 16:55:58,495 - INFO - Context window detected: 820
+2026-03-30 16:55:58,496 - INFO - Review score calculated: 0.0 (likes=0, downloads=9161)
+2026-03-30 16:55:58,496 - INFO - Processed model: Mungert/AutoGLM-Phone-9B-Multilingual-GGUF
+2026-03-30 16:55:58,496 - INFO - No industry keyword match; using 'Others'
+2026-03-30 16:55:58,497 - INFO - Quantization detected: GGUF
+2026-03-30 16:55:58,497 - INFO - Review score calculated: 0.6568575932737782 (likes=5, downloads=7611)
+2026-03-30 16:55:58,497 - INFO - Processed model: mradermacher/OmniCoder-9B-i1-GGUF
+2026-03-30 16:55:58,497 - INFO - Industry matched: security -> Cybersecurity
+2026-03-30 16:55:58,498 - INFO - Quantization detected: GGUF
+2026-03-30 16:55:58,498 - INFO - Review score calculated: 0.26770178021683844 (likes=2, downloads=7470)
+2026-03-30 16:55:58,498 - INFO - Processed model: mradermacher/prettybird_bce_basic_8B-i1-GGUF
+2026-03-30 16:55:58,499 - INFO - Industry matched: image -> Computer Vision (CV)
+2026-03-30 16:55:58,499 - INFO - Review score calculated: 2.957386745530313 (likes=22, downloads=7438)
+2026-03-30 16:55:58,499 - INFO - Processed model: Hcompany/Holo2-4B
+2026-03-30 16:55:58,500 - INFO - Industry matched: generation -> Creative Arts
+2026-03-30 16:55:58,500 - INFO - Quantization detected: GGUF
+2026-03-30 16:55:58,500 - INFO - Review score calculated: 0.27586206896551724 (likes=2, downloads=7249)
+2026-03-30 16:55:58,500 - INFO - Processed model: geoffmunn/Qwen3-32B-f16
+2026-03-30 16:55:58,501 - INFO - Industry matched: security -> Cybersecurity
+2026-03-30 16:55:58,501 - INFO - Quantization detected: GGUF
+2026-03-30 16:55:58,501 - INFO - Review score calculated: 0.1411631846414455 (likes=1, downloads=7083)
+2026-03-30 16:55:58,502 - INFO - Processed model: mradermacher/AgentDoG-Llama3.1-8B-i1-GGUF
+2026-03-30 16:55:58,502 - INFO - Industry matched: image -> Computer Vision (CV)
+2026-03-30 16:55:58,502 - INFO - Context window detected: 820
+2026-03-30 16:55:58,503 - INFO - Review score calculated: 5.0 (likes=231, downloads=6935)
+2026-03-30 16:55:58,503 - INFO - Processed model: zai-org/AutoGLM-Phone-9B-Multilingual
+2026-03-30 16:55:58,503 - INFO - Industry matched: generation -> Creative Arts
+2026-03-30 16:55:58,504 - INFO - Quantization detected: GGUF
+2026-03-30 16:55:58,504 - INFO - Review score calculated: 0.1464343242055938 (likes=1, downloads=6828)
+2026-03-30 16:55:58,504 - INFO - Processed model: geoffmunn/Qwen3-8B-f16
+2026-03-30 16:55:58,504 - INFO - Industry matched: security -> Cybersecurity
+2026-03-30 16:55:58,505 - INFO - Quantization detected: GGUF
+2026-03-30 16:55:58,505 - INFO - Review score calculated: 0.31298904538341155 (likes=2, downloads=6389)
+2026-03-30 16:55:58,505 - INFO - Processed model: mradermacher/AgentDoG-Qwen2.5-7B-i1-GGUF
+2026-03-30 16:55:58,506 - INFO - Industry matched: vision -> Computer Vision (CV)
+2026-03-30 16:55:58,506 - INFO - Quantization detected: GGUF
+2026-03-30 16:55:58,506 - INFO - Review score calculated: 0.0 (likes=0, downloads=6239)
+2026-03-30 16:55:58,506 - INFO - Processed model: mradermacher/Qwen3-VL-8B-Interleave-Thinking-i1-GGUF
+2026-03-30 16:55:58,507 - INFO - Industry matched: security -> Cybersecurity
+2026-03-30 16:55:58,507 - INFO - Quantization detected: GGUF
+2026-03-30 16:55:58,508 - INFO - Review score calculated: 0.0 (likes=0, downloads=6191)
+2026-03-30 16:55:58,509 - INFO - Processed model: mradermacher/AgentDoG-FG-Qwen2.5-7B-i1-GGUF
+2026-03-30 16:55:58,509 - INFO - Industry matched: data -> Data Science
+2026-03-30 16:55:58,509 - INFO - Quantization detected: GGUF
+2026-03-30 16:55:58,510 - INFO - Review score calculated: 0.0 (likes=0, downloads=6005)
+2026-03-30 16:55:58,510 - INFO - Processed model: mradermacher/SmartSnap-Qwen2.5-7B-i1-GGUF
+2026-03-30 16:55:58,510 - INFO - Industry matched: data -> Data Science
+2026-03-30 16:55:58,511 - INFO - Quantization detected: GGUF
+2026-03-30 16:55:58,511 - INFO - Review score calculated: 0.0 (likes=0, downloads=6002)
+2026-03-30 16:55:58,511 - INFO - Processed model: mradermacher/Cicikus_v2_3B-i1-GGUF
+2026-03-30 16:55:58,512 - INFO - Industry matched: data -> Data Science
+2026-03-30 16:55:58,512 - INFO - Quantization detected: GGUF
+2026-03-30 16:55:58,512 - INFO - Review score calculated: 0.0 (likes=0, downloads=5893)
+2026-03-30 16:55:58,512 - INFO - Processed model: mradermacher/Cicikus-v3-1.4B-i1-GGUF
+2026-03-30 16:55:58,513 - INFO - Industry matched: image -> Computer Vision (CV)
+2026-03-30 16:55:58,513 - INFO - Quantization detected: GGUF
+2026-03-30 16:55:58,513 - INFO - Review score calculated: 3.4453057708871664 (likes=20, downloads=5804)
+2026-03-30 16:55:58,514 - INFO - Processed model: thelamapi/next-ocr
+2026-03-30 16:55:58,514 - INFO - Industry matched: image -> Computer Vision (CV)
+2026-03-30 16:55:58,514 - INFO - Quantization detected: GGUF
+2026-03-30 16:55:58,515 - INFO - Context window detected: 9677
+2026-03-30 16:55:58,515 - INFO - Review score calculated: 0.7095973035302465 (likes=4, downloads=5636)
+2026-03-30 16:55:58,515 - INFO - Processed model: janhq/Jan-v2-VL-max-gguf
+2026-03-30 16:55:58,515 - INFO - No industry keyword match; using 'Others'
+2026-03-30 16:55:58,516 - INFO - Quantization detected: GGUF
+2026-03-30 16:55:58,516 - INFO - Review score calculated: 0.0 (likes=0, downloads=5612)
+2026-03-30 16:55:58,516 - INFO - Processed model: mradermacher/OpenSWE-32B-i1-GGUF
+2026-03-30 16:55:58,517 - INFO - No industry keyword match; using 'Others'
+2026-03-30 16:55:58,517 - INFO - Quantization detected: GGUF
+2026-03-30 16:55:58,517 - INFO - Review score calculated: 0.7237199203908088 (likes=4, downloads=5526)
+2026-03-30 16:55:58,517 - INFO - Processed model: mradermacher/MiroThinker-v1.5-30B-i1-GGUF
+2026-03-30 16:55:58,518 - INFO - Industry matched: generation -> Creative Arts
+2026-03-30 16:55:58,518 - INFO - Quantization detected: GGUF
+2026-03-30 16:55:58,518 - INFO - Review score calculated: 4.01899890390939 (likes=22, downloads=5473)
+2026-03-30 16:55:58,519 - INFO - Processed model: Andycurrent/gemma-3-4b-it-uncensored-v2-GGUF
+2026-03-30 16:55:58,519 - INFO - No industry keyword match; using 'Others'
+2026-03-30 16:55:58,520 - INFO - Quantization detected: GGUF
+2026-03-30 16:55:58,520 - INFO - Review score calculated: 0.0 (likes=0, downloads=5424)
+2026-03-30 16:55:58,521 - INFO - Processed model: mradermacher/UI-Venus-1.5-30B-A3B-i1-GGUF
+2026-03-30 16:55:58,521 - INFO - Industry matched: data -> Data Science
+2026-03-30 16:55:58,521 - INFO - Quantization detected: GGUF
+2026-03-30 16:55:58,522 - INFO - Review score calculated: 0.7629219912263971 (likes=4, downloads=5242)
+2026-03-30 16:55:58,522 - INFO - Processed model: TeichAI/Qwen3-4B-Thinking-2507-MiMo-V2-Flash-Distill-GGUF
+2026-03-30 16:55:58,522 - INFO - Industry matched: learning -> Education
+2026-03-30 16:55:58,522 - INFO - Quantization detected: GGUF
+2026-03-30 16:55:58,523 - INFO - Review score calculated: 0.0 (likes=0, downloads=5228)
+2026-03-30 16:55:58,523 - INFO - Processed model: mradermacher/Agent-STAR-RL-7B-i1-GGUF
+2026-03-30 16:55:58,523 - INFO - Industry matched: data -> Data Science
+2026-03-30 16:55:58,524 - INFO - Quantization detected: GGUF
+2026-03-30 16:55:58,524 - INFO - Review score calculated: 0.19316206297083252 (likes=1, downloads=5176)
+2026-03-30 16:55:58,524 - INFO - Processed model: mradermacher/Crow_Qwen9B_OpusUCH-i1-GGUF
+2026-03-30 16:55:58,524 - INFO - Industry matched: data -> Data Science
+2026-03-30 16:55:58,525 - INFO - Quantization detected: GGUF
+2026-03-30 16:55:58,525 - INFO - Review score calculated: 0.0 (likes=0, downloads=4992)
+2026-03-30 16:55:58,525 - INFO - Processed model: mradermacher/OpenAgent-i1-GGUF
+2026-03-30 16:55:58,525 - INFO - Successfully fetched 50 models
+2026-03-30 16:55:58,759 - INFO - Architect candidates selected: 4
+2026-03-30 16:56:01,034 - INFO - HTTP Request: GET https://api.notion.com/v1/data_sources/3307c76c-b92a-8091-a9a0-000b7bf2a71e "HTTP/1.1 200 OK"
+2026-03-30 16:56:01,175 - INFO - Resolved data source: 3307c76c-b92a-8091-a9a0-000b7bf2a71e
+2026-03-30 16:56:02,395 - INFO - HTTP Request: POST https://api.notion.com/v1/data_sources/3307c76c-b92a-8091-a9a0-000b7bf2a71e/query "HTTP/1.1 200 OK"
+2026-03-30 16:56:03,273 - INFO - HTTP Request: POST https://api.notion.com/v1/data_sources/3307c76c-b92a-8091-a9a0-000b7bf2a71e/query "HTTP/1.1 200 OK"
+2026-03-30 16:56:03,917 - INFO - HTTP Request: GET https://api.notion.com/v1/data_sources/3307c76c-b92a-8091-a9a0-000b7bf2a71e "HTTP/1.1 200 OK"
+2026-03-30 16:56:03,921 - INFO - Starting sync to Data Source: 3307c76c-b92a-8091-a9a0-000b7bf2a71e...
+2026-03-30 16:56:03,925 - INFO - [ELITE-ARCHITECT] Processing bullpoint/Qwen3-Coder-Next-AWQ-4bit
+2026-03-30 16:56:03,926 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-30 16:56:15,755 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent "HTTP/1.1 200 OK"
+2026-03-30 16:56:16,785 - INFO - HTTP Request: PATCH https://api.notion.com/v1/pages/3307c76c-b92a-819e-8109-f96e3ff472a1 "HTTP/1.1 200 OK"
+2026-03-30 16:56:16,790 - INFO - [ENRICHING EXISTING] Updated architect payload for existing model: bullpoint/Qwen3-Coder-Next-AWQ-4bit
+2026-03-30 16:56:17,795 - INFO - [ELITE-ARCHITECT] Processing nvidia/personaplex-7b-v1
+2026-03-30 16:56:17,797 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-30 16:56:31,763 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent "HTTP/1.1 200 OK"
+2026-03-30 16:56:32,662 - INFO - HTTP Request: PATCH https://api.notion.com/v1/pages/3307c76c-b92a-81e9-96d7-d7c8a6792865 "HTTP/1.1 200 OK"
+2026-03-30 16:56:32,666 - INFO - [ENRICHING EXISTING] Updated architect payload for existing model: nvidia/personaplex-7b-v1
+2026-03-30 16:56:33,669 - INFO - [ELITE-ARCHITECT] Processing moonshotai/Kimi-VL-A3B-Instruct
+2026-03-30 16:56:33,669 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-30 16:56:44,562 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent "HTTP/1.1 200 OK"
+2026-03-30 16:56:45,595 - INFO - HTTP Request: PATCH https://api.notion.com/v1/pages/3307c76c-b92a-81a9-a801-f682a815bbe5 "HTTP/1.1 200 OK"
+2026-03-30 16:56:45,598 - INFO - [ENRICHING EXISTING] Updated architect payload for existing model: moonshotai/Kimi-VL-A3B-Instruct
+2026-03-30 16:56:46,601 - INFO - [ELITE-ARCHITECT] Processing SWE-bench/SWE-agent-LM-7B
+2026-03-30 16:56:46,601 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-30 16:57:00,132 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent "HTTP/1.1 200 OK"
+2026-03-30 16:57:00,939 - INFO - HTTP Request: PATCH https://api.notion.com/v1/pages/3307c76c-b92a-8110-b4b0-c560183b69e2 "HTTP/1.1 200 OK"
+2026-03-30 16:57:00,949 - INFO - [ENRICHING EXISTING] Updated architect payload for existing model: SWE-bench/SWE-agent-LM-7B
+2026-03-30 16:57:01,951 - INFO - [ELITE-ARCHITECT] Processing mradermacher/Crow-9B-Opus-4.6-Distill-Heretic_Qwen3.5-GGUF
+2026-03-30 16:57:01,952 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-30 16:57:13,992 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent "HTTP/1.1 200 OK"
+2026-03-30 16:57:16,396 - INFO - HTTP Request: PATCH https://api.notion.com/v1/pages/3307c76c-b92a-8147-a3a5-efd615ac452c "HTTP/1.1 200 OK"
+2026-03-30 16:57:16,403 - INFO - [ENRICHING EXISTING] Updated architect payload for existing model: mradermacher/Crow-9B-Opus-4.6-Distill-Heretic_Qwen3.5-GGUF
+2026-03-30 16:57:17,406 - INFO - [ELITE-ARCHITECT] Processing zai-org/AutoGLM-Phone-9B
+2026-03-30 16:57:17,406 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-30 16:57:38,559 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent "HTTP/1.1 200 OK"
+2026-03-30 16:57:39,761 - INFO - HTTP Request: PATCH https://api.notion.com/v1/pages/3307c76c-b92a-8100-9a8f-c16e61637bf0 "HTTP/1.1 200 OK"
+2026-03-30 16:57:39,771 - INFO - [ENRICHING EXISTING] Updated architect payload for existing model: zai-org/AutoGLM-Phone-9B
+2026-03-30 16:57:40,776 - INFO - [ELITE-ARCHITECT] Processing janhq/Jan-v2-VL-high-gguf
+2026-03-30 16:57:40,778 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-30 16:57:58,398 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent "HTTP/1.1 200 OK"
+2026-03-30 16:57:59,313 - INFO - HTTP Request: PATCH https://api.notion.com/v1/pages/3307c76c-b92a-819e-8dac-cc6071175d8e "HTTP/1.1 200 OK"
+2026-03-30 16:57:59,324 - INFO - [ENRICHING EXISTING] Updated architect payload for existing model: janhq/Jan-v2-VL-high-gguf
+2026-03-30 16:58:00,325 - INFO - [ELITE-ARCHITECT] Processing Crownelius/Crow-9B-HERETIC-4.6
+2026-03-30 16:58:00,326 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-30 16:58:11,002 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent "HTTP/1.1 200 OK"
+2026-03-30 16:58:11,872 - INFO - HTTP Request: PATCH https://api.notion.com/v1/pages/3307c76c-b92a-8172-b0f1-dee72ff77b75 "HTTP/1.1 200 OK"
+2026-03-30 16:58:11,875 - INFO - [ENRICHING EXISTING] Updated architect payload for existing model: Crownelius/Crow-9B-HERETIC-4.6
+2026-03-30 16:58:12,878 - INFO - [ELITE-ARCHITECT] Processing Tesslate/OmniCoder-9B-GGUF
+2026-03-30 16:58:12,879 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-30 16:58:23,431 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent "HTTP/1.1 200 OK"
+2026-03-30 16:58:24,533 - INFO - HTTP Request: PATCH https://api.notion.com/v1/pages/3307c76c-b92a-8104-8e89-f151a0ba0900 "HTTP/1.1 200 OK"
+2026-03-30 16:58:24,533 - INFO - [ENRICHING EXISTING] Updated architect payload for existing model: Tesslate/OmniCoder-9B-GGUF
+2026-03-30 16:58:25,538 - INFO - [ELITE-ARCHITECT] Processing geoffmunn/Qwen3-4B-f16
+2026-03-30 16:58:25,539 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-30 16:58:39,113 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent "HTTP/1.1 200 OK"
+2026-03-30 16:58:40,081 - INFO - HTTP Request: PATCH https://api.notion.com/v1/pages/3307c76c-b92a-81e7-8254-cbe020bf0ad2 "HTTP/1.1 200 OK"
+2026-03-30 16:58:40,086 - INFO - [ENRICHING EXISTING] Updated architect payload for existing model: geoffmunn/Qwen3-4B-f16
+2026-03-30 16:58:41,089 - INFO - [ELITE-ARCHITECT] Processing janhq/Jan-v2-VL-med-gguf
+2026-03-30 16:58:41,090 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-30 16:58:56,986 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent "HTTP/1.1 200 OK"
+2026-03-30 16:58:58,950 - INFO - HTTP Request: PATCH https://api.notion.com/v1/pages/3307c76c-b92a-8114-b018-d4a9f7306e70 "HTTP/1.1 200 OK"
+2026-03-30 16:58:58,955 - INFO - [ENRICHING EXISTING] Updated architect payload for existing model: janhq/Jan-v2-VL-med-gguf
+2026-03-30 16:58:59,957 - INFO - [SYNC-ONLY] Syncing geoffmunn/Qwen3-14B-f16 without architect suite
+2026-03-30 16:59:00,553 - INFO - HTTP Request: POST https://api.notion.com/v1/pages "HTTP/1.1 200 OK"
+2026-03-30 16:59:00,554 - INFO - [CREATED NEW] Successfully created page for: geoffmunn/Qwen3-14B-f16
+2026-03-30 16:59:01,556 - INFO - [ELITE-ARCHITECT] Processing Tesslate/OmniCoder-9B
+2026-03-30 16:59:01,556 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-30 16:59:14,501 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent "HTTP/1.1 200 OK"
+2026-03-30 16:59:15,289 - INFO - HTTP Request: PATCH https://api.notion.com/v1/pages/3307c76c-b92a-819c-8b73-f6e594c52e88 "HTTP/1.1 200 OK"
+2026-03-30 16:59:15,294 - INFO - [ENRICHING EXISTING] Updated architect payload for existing model: Tesslate/OmniCoder-9B
+2026-03-30 16:59:16,298 - INFO - [ELITE-ARCHITECT] Processing janhq/Jan-code-4b-gguf
+2026-03-30 16:59:16,299 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-30 16:59:30,310 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent "HTTP/1.1 200 OK"
+2026-03-30 16:59:31,319 - INFO - HTTP Request: PATCH https://api.notion.com/v1/pages/3307c76c-b92a-81cd-89f2-dd645c8e6ae5 "HTTP/1.1 200 OK"
+2026-03-30 16:59:31,322 - INFO - [ENRICHING EXISTING] Updated architect payload for existing model: janhq/Jan-code-4b-gguf
+2026-03-30 16:59:32,324 - INFO - [ELITE-ARCHITECT] Processing LocoreMind/LocoOperator-4B-GGUF
+2026-03-30 16:59:32,326 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-30 16:59:45,724 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent "HTTP/1.1 200 OK"
+2026-03-30 16:59:46,635 - INFO - HTTP Request: PATCH https://api.notion.com/v1/pages/3307c76c-b92a-817d-9b91-edad29617063 "HTTP/1.1 200 OK"
+2026-03-30 16:59:46,638 - INFO - [ENRICHING EXISTING] Updated architect payload for existing model: LocoreMind/LocoOperator-4B-GGUF
+2026-03-30 16:59:47,639 - INFO - [ELITE-ARCHITECT] Processing mradermacher/Crow-9B-Opus-4.6-Distill-Heretic_Qwen3.5-i1-GGUF
+2026-03-30 16:59:47,640 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-30 17:00:07,827 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent "HTTP/1.1 200 OK"
+2026-03-30 17:00:10,231 - INFO - HTTP Request: PATCH https://api.notion.com/v1/pages/3307c76c-b92a-8126-a849-f0d53106fa24 "HTTP/1.1 200 OK"
+2026-03-30 17:00:10,237 - INFO - [ENRICHING EXISTING] Updated architect payload for existing model: mradermacher/Crow-9B-Opus-4.6-Distill-Heretic_Qwen3.5-i1-GGUF
+2026-03-30 17:00:11,241 - INFO - [ELITE-ARCHITECT] Processing Crownelius/Crow-4B-Opus-4.6-Distill-Heretic_Qwen3.5
+2026-03-30 17:00:11,242 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-30 17:00:29,836 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent "HTTP/1.1 200 OK"
+2026-03-30 17:00:31,110 - INFO - HTTP Request: PATCH https://api.notion.com/v1/pages/3307c76c-b92a-810f-b5ad-e7ac2670fdec "HTTP/1.1 200 OK"
+2026-03-30 17:00:31,118 - INFO - [ENRICHING EXISTING] Updated architect payload for existing model: Crownelius/Crow-4B-Opus-4.6-Distill-Heretic_Qwen3.5
+2026-03-30 17:00:32,121 - INFO - [ELITE-ARCHITECT] Processing mratsim/MiniMax-M2.5-BF16-INT4-AWQ
+2026-03-30 17:00:32,122 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-30 17:00:53,361 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent "HTTP/1.1 200 OK"
+2026-03-30 17:00:55,698 - INFO - HTTP Request: PATCH https://api.notion.com/v1/pages/3307c76c-b92a-818e-8c47-c2b85b68e460 "HTTP/1.1 200 OK"
+2026-03-30 17:00:55,704 - INFO - [ENRICHING EXISTING] Updated architect payload for existing model: mratsim/MiniMax-M2.5-BF16-INT4-AWQ
+2026-03-30 17:00:56,707 - INFO - [ELITE-ARCHITECT] Processing LocoreMind/LocoOperator-4B
+2026-03-30 17:00:56,709 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-30 17:01:10,620 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent "HTTP/1.1 200 OK"
+2026-03-30 17:01:11,756 - INFO - HTTP Request: PATCH https://api.notion.com/v1/pages/3307c76c-b92a-81dc-befd-fc1e66621ab5 "HTTP/1.1 200 OK"
+2026-03-30 17:01:11,758 - INFO - [ENRICHING EXISTING] Updated architect payload for existing model: LocoreMind/LocoOperator-4B
+2026-03-30 17:01:12,761 - INFO - [ELITE-ARCHITECT] Processing mradermacher/MiroThinker-1.7-mini-i1-GGUF
+2026-03-30 17:01:12,762 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-30 17:01:25,168 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent "HTTP/1.1 200 OK"
+2026-03-30 17:01:26,033 - INFO - HTTP Request: PATCH https://api.notion.com/v1/pages/3307c76c-b92a-8128-a4dc-ea73657447a2 "HTTP/1.1 200 OK"
+2026-03-30 17:01:26,048 - INFO - [ENRICHING EXISTING] Updated architect payload for existing model: mradermacher/MiroThinker-1.7-mini-i1-GGUF
+2026-03-30 17:01:27,050 - INFO - [ELITE-ARCHITECT] Processing bartowski/Tesslate_OmniCoder-9B-GGUF
+2026-03-30 17:01:27,051 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-30 17:01:39,165 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent "HTTP/1.1 200 OK"
+2026-03-30 17:01:40,275 - INFO - HTTP Request: PATCH https://api.notion.com/v1/pages/3307c76c-b92a-81fe-a827-ec83aa6cb53b "HTTP/1.1 200 OK"
+2026-03-30 17:01:40,276 - INFO - [ENRICHING EXISTING] Updated architect payload for existing model: bartowski/Tesslate_OmniCoder-9B-GGUF
+2026-03-30 17:01:41,278 - INFO - [ELITE-ARCHITECT] Processing cyankiwi/OmniCoder-9B-AWQ-BF16-INT4
+2026-03-30 17:01:41,281 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-30 17:01:54,190 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent "HTTP/1.1 200 OK"
+2026-03-30 17:01:55,040 - INFO - HTTP Request: PATCH https://api.notion.com/v1/pages/3307c76c-b92a-8198-aaa7-c3c5e876606c "HTTP/1.1 200 OK"
+2026-03-30 17:01:55,044 - INFO - [ENRICHING EXISTING] Updated architect payload for existing model: cyankiwi/OmniCoder-9B-AWQ-BF16-INT4
+2026-03-30 17:01:56,046 - INFO - [ELITE-ARCHITECT] Processing mradermacher/OpenSWE-72B-i1-GGUF
+2026-03-30 17:01:56,046 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-30 17:02:12,667 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent "HTTP/1.1 200 OK"
+2026-03-30 17:02:14,535 - INFO - HTTP Request: PATCH https://api.notion.com/v1/pages/3307c76c-b92a-811f-ba1a-e8bf20300bda "HTTP/1.1 200 OK"
+2026-03-30 17:02:14,540 - INFO - [ENRICHING EXISTING] Updated architect payload for existing model: mradermacher/OpenSWE-72B-i1-GGUF
+2026-03-30 17:02:15,543 - INFO - [ELITE-ARCHITECT] Processing cyankiwi/OmniCoder-9B-AWQ-4bit
+2026-03-30 17:02:15,545 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-30 17:02:30,693 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent "HTTP/1.1 200 OK"
+2026-03-30 17:02:31,745 - INFO - HTTP Request: PATCH https://api.notion.com/v1/pages/3307c76c-b92a-818a-9ba7-e3887db2f2bf "HTTP/1.1 200 OK"
+2026-03-30 17:02:31,747 - INFO - [ENRICHING EXISTING] Updated architect payload for existing model: cyankiwi/OmniCoder-9B-AWQ-4bit
+2026-03-30 17:02:32,748 - INFO - [ELITE-ARCHITECT] Processing mradermacher/Crow-4B-Opus-4.6-Distill-Heretic_Qwen3.5-i1-GGUF
+2026-03-30 17:02:32,748 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-30 17:02:45,749 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent "HTTP/1.1 200 OK"
+2026-03-30 17:02:46,790 - INFO - HTTP Request: PATCH https://api.notion.com/v1/pages/3307c76c-b92a-8103-b4be-dc3aff03558d "HTTP/1.1 200 OK"
+2026-03-30 17:02:46,795 - INFO - [ENRICHING EXISTING] Updated architect payload for existing model: mradermacher/Crow-4B-Opus-4.6-Distill-Heretic_Qwen3.5-i1-GGUF
+2026-03-30 17:02:47,799 - INFO - [SYNC-ONLY] Syncing mratsim/MiniMax-M2.5-FP8-INT4-AWQ without architect suite
+2026-03-30 17:02:48,711 - INFO - HTTP Request: POST https://api.notion.com/v1/pages "HTTP/1.1 200 OK"
+2026-03-30 17:02:48,713 - INFO - [CREATED NEW] Successfully created page for: mratsim/MiniMax-M2.5-FP8-INT4-AWQ
+2026-03-30 17:02:49,714 - INFO - [ELITE-ARCHITECT] Processing Mungert/AutoGLM-Phone-9B-Multilingual-GGUF
+2026-03-30 17:02:49,715 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-30 17:03:10,468 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent "HTTP/1.1 200 OK"
+2026-03-30 17:03:11,290 - INFO - HTTP Request: PATCH https://api.notion.com/v1/pages/3307c76c-b92a-8134-9b2b-d0579e102855 "HTTP/1.1 200 OK"
+2026-03-30 17:03:11,298 - INFO - [ENRICHING EXISTING] Updated architect payload for existing model: Mungert/AutoGLM-Phone-9B-Multilingual-GGUF
+2026-03-30 17:03:12,313 - INFO - [SYNC-ONLY] Syncing mradermacher/OmniCoder-9B-i1-GGUF without architect suite
+2026-03-30 17:03:13,029 - INFO - HTTP Request: POST https://api.notion.com/v1/pages "HTTP/1.1 200 OK"
+2026-03-30 17:03:13,033 - INFO - [CREATED NEW] Successfully created page for: mradermacher/OmniCoder-9B-i1-GGUF
+2026-03-30 17:03:14,035 - INFO - [SYNC-ONLY] Syncing mradermacher/prettybird_bce_basic_8B-i1-GGUF without architect suite
+2026-03-30 17:03:14,668 - INFO - HTTP Request: POST https://api.notion.com/v1/pages "HTTP/1.1 200 OK"
+2026-03-30 17:03:14,671 - INFO - [CREATED NEW] Successfully created page for: mradermacher/prettybird_bce_basic_8B-i1-GGUF
+2026-03-30 17:03:15,673 - INFO - [SYNC-ONLY] Syncing Hcompany/Holo2-4B without architect suite
+2026-03-30 17:03:16,556 - INFO - HTTP Request: POST https://api.notion.com/v1/pages "HTTP/1.1 200 OK"
+2026-03-30 17:03:16,558 - INFO - [CREATED NEW] Successfully created page for: Hcompany/Holo2-4B
+2026-03-30 17:03:17,559 - INFO - [ELITE-ARCHITECT] Processing geoffmunn/Qwen3-32B-f16
+2026-03-30 17:03:17,559 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-30 17:03:30,160 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent "HTTP/1.1 200 OK"
+2026-03-30 17:03:31,522 - INFO - HTTP Request: PATCH https://api.notion.com/v1/pages/3307c76c-b92a-811f-8d96-d2198be1c9f7 "HTTP/1.1 200 OK"
+2026-03-30 17:03:31,526 - INFO - [ENRICHING EXISTING] Updated architect payload for existing model: geoffmunn/Qwen3-32B-f16
+2026-03-30 17:03:32,528 - INFO - [SYNC-ONLY] Syncing mradermacher/AgentDoG-Llama3.1-8B-i1-GGUF without architect suite
+2026-03-30 17:03:33,691 - INFO - HTTP Request: POST https://api.notion.com/v1/pages "HTTP/1.1 200 OK"
+2026-03-30 17:03:33,692 - INFO - [CREATED NEW] Successfully created page for: mradermacher/AgentDoG-Llama3.1-8B-i1-GGUF
+2026-03-30 17:03:34,694 - INFO - [ELITE-ARCHITECT] Processing zai-org/AutoGLM-Phone-9B-Multilingual
+2026-03-30 17:03:34,694 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-30 17:03:50,150 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent "HTTP/1.1 200 OK"
+2026-03-30 17:03:51,753 - INFO - HTTP Request: PATCH https://api.notion.com/v1/pages/3307c76c-b92a-8114-9ccb-dd009d584f2b "HTTP/1.1 200 OK"
+2026-03-30 17:03:51,758 - INFO - [ENRICHING EXISTING] Updated architect payload for existing model: zai-org/AutoGLM-Phone-9B-Multilingual
+2026-03-30 17:03:52,761 - INFO - [SYNC-ONLY] Syncing geoffmunn/Qwen3-8B-f16 without architect suite
+2026-03-30 17:03:53,358 - INFO - HTTP Request: POST https://api.notion.com/v1/pages "HTTP/1.1 200 OK"
+2026-03-30 17:03:53,359 - INFO - [CREATED NEW] Successfully created page for: geoffmunn/Qwen3-8B-f16
+2026-03-30 17:03:54,362 - INFO - [SYNC-ONLY] Syncing mradermacher/AgentDoG-Qwen2.5-7B-i1-GGUF without architect suite
+2026-03-30 17:03:55,278 - INFO - HTTP Request: POST https://api.notion.com/v1/pages "HTTP/1.1 200 OK"
+2026-03-30 17:03:55,279 - INFO - [CREATED NEW] Successfully created page for: mradermacher/AgentDoG-Qwen2.5-7B-i1-GGUF
+2026-03-30 17:03:56,281 - INFO - [SYNC-ONLY] Syncing mradermacher/Qwen3-VL-8B-Interleave-Thinking-i1-GGUF without architect suite
+2026-03-30 17:03:57,232 - INFO - HTTP Request: POST https://api.notion.com/v1/pages "HTTP/1.1 200 OK"
+2026-03-30 17:03:57,241 - INFO - [CREATED NEW] Successfully created page for: mradermacher/Qwen3-VL-8B-Interleave-Thinking-i1-GGUF
+2026-03-30 17:03:58,242 - INFO - [SYNC-ONLY] Syncing mradermacher/AgentDoG-FG-Qwen2.5-7B-i1-GGUF without architect suite
+2026-03-30 17:03:58,910 - INFO - HTTP Request: POST https://api.notion.com/v1/pages "HTTP/1.1 200 OK"
+2026-03-30 17:03:58,911 - INFO - [CREATED NEW] Successfully created page for: mradermacher/AgentDoG-FG-Qwen2.5-7B-i1-GGUF
+2026-03-30 17:03:59,914 - INFO - [SYNC-ONLY] Syncing mradermacher/SmartSnap-Qwen2.5-7B-i1-GGUF without architect suite
+2026-03-30 17:04:00,544 - INFO - HTTP Request: POST https://api.notion.com/v1/pages "HTTP/1.1 200 OK"
+2026-03-30 17:04:00,546 - INFO - [CREATED NEW] Successfully created page for: mradermacher/SmartSnap-Qwen2.5-7B-i1-GGUF
+2026-03-30 17:04:01,549 - INFO - [SYNC-ONLY] Syncing mradermacher/Cicikus_v2_3B-i1-GGUF without architect suite
+2026-03-30 17:04:02,409 - INFO - HTTP Request: POST https://api.notion.com/v1/pages "HTTP/1.1 200 OK"
+2026-03-30 17:04:02,415 - INFO - [CREATED NEW] Successfully created page for: mradermacher/Cicikus_v2_3B-i1-GGUF
+2026-03-30 17:04:03,417 - INFO - [SYNC-ONLY] Syncing mradermacher/Cicikus-v3-1.4B-i1-GGUF without architect suite
+2026-03-30 17:04:04,730 - INFO - HTTP Request: POST https://api.notion.com/v1/pages "HTTP/1.1 200 OK"
+2026-03-30 17:04:04,753 - INFO - [CREATED NEW] Successfully created page for: mradermacher/Cicikus-v3-1.4B-i1-GGUF
+2026-03-30 17:04:05,755 - INFO - [SYNC-ONLY] Syncing thelamapi/next-ocr without architect suite
+2026-03-30 17:04:06,423 - INFO - HTTP Request: POST https://api.notion.com/v1/pages "HTTP/1.1 200 OK"
+2026-03-30 17:04:06,424 - INFO - [CREATED NEW] Successfully created page for: thelamapi/next-ocr
+2026-03-30 17:04:07,426 - INFO - [SYNC-ONLY] Syncing janhq/Jan-v2-VL-max-gguf without architect suite
+2026-03-30 17:04:08,022 - INFO - HTTP Request: POST https://api.notion.com/v1/pages "HTTP/1.1 200 OK"
+2026-03-30 17:04:08,025 - INFO - [CREATED NEW] Successfully created page for: janhq/Jan-v2-VL-max-gguf
+2026-03-30 17:04:09,027 - INFO - [SYNC-ONLY] Syncing mradermacher/OpenSWE-32B-i1-GGUF without architect suite
+2026-03-30 17:04:09,638 - INFO - HTTP Request: POST https://api.notion.com/v1/pages "HTTP/1.1 200 OK"
+2026-03-30 17:04:09,640 - INFO - [CREATED NEW] Successfully created page for: mradermacher/OpenSWE-32B-i1-GGUF
+2026-03-30 17:04:10,643 - INFO - [SYNC-ONLY] Syncing mradermacher/MiroThinker-v1.5-30B-i1-GGUF without architect suite
+2026-03-30 17:04:11,185 - INFO - HTTP Request: POST https://api.notion.com/v1/pages "HTTP/1.1 200 OK"
+2026-03-30 17:04:11,188 - INFO - [CREATED NEW] Successfully created page for: mradermacher/MiroThinker-v1.5-30B-i1-GGUF
+2026-03-30 17:04:12,192 - INFO - [SYNC-ONLY] Syncing Andycurrent/gemma-3-4b-it-uncensored-v2-GGUF without architect suite
+2026-03-30 17:04:12,730 - INFO - HTTP Request: POST https://api.notion.com/v1/pages "HTTP/1.1 200 OK"
+2026-03-30 17:04:12,733 - INFO - [CREATED NEW] Successfully created page for: Andycurrent/gemma-3-4b-it-uncensored-v2-GGUF
+2026-03-30 17:04:13,735 - INFO - [SYNC-ONLY] Syncing mradermacher/UI-Venus-1.5-30B-A3B-i1-GGUF without architect suite
+2026-03-30 17:04:17,435 - INFO - HTTP Request: POST https://api.notion.com/v1/pages "HTTP/1.1 200 OK"
+2026-03-30 17:04:17,457 - INFO - [CREATED NEW] Successfully created page for: mradermacher/UI-Venus-1.5-30B-A3B-i1-GGUF
+2026-03-30 17:04:18,458 - INFO - [SYNC-ONLY] Syncing TeichAI/Qwen3-4B-Thinking-2507-MiMo-V2-Flash-Distill-GGUF without architect suite
+2026-03-30 17:04:18,999 - INFO - HTTP Request: POST https://api.notion.com/v1/pages "HTTP/1.1 200 OK"
+2026-03-30 17:04:19,001 - INFO - [CREATED NEW] Successfully created page for: TeichAI/Qwen3-4B-Thinking-2507-MiMo-V2-Flash-Distill-GGUF
+2026-03-30 17:04:20,004 - INFO - [SYNC-ONLY] Syncing mradermacher/Agent-STAR-RL-7B-i1-GGUF without architect suite
+2026-03-30 17:04:20,693 - INFO - HTTP Request: POST https://api.notion.com/v1/pages "HTTP/1.1 200 OK"
+2026-03-30 17:04:20,694 - INFO - [CREATED NEW] Successfully created page for: mradermacher/Agent-STAR-RL-7B-i1-GGUF
+2026-03-30 17:04:21,695 - INFO - [SYNC-ONLY] Syncing mradermacher/Crow_Qwen9B_OpusUCH-i1-GGUF without architect suite
+2026-03-30 17:04:22,218 - INFO - HTTP Request: POST https://api.notion.com/v1/pages "HTTP/1.1 200 OK"
+2026-03-30 17:04:22,219 - INFO - [CREATED NEW] Successfully created page for: mradermacher/Crow_Qwen9B_OpusUCH-i1-GGUF
+2026-03-30 17:04:23,220 - INFO - [SYNC-ONLY] Syncing mradermacher/OpenAgent-i1-GGUF without architect suite
+2026-03-30 17:04:23,793 - INFO - HTTP Request: POST https://api.notion.com/v1/pages "HTTP/1.1 200 OK"
+2026-03-30 17:04:23,794 - INFO - [CREATED NEW] Successfully created page for: mradermacher/OpenAgent-i1-GGUF
+2026-03-30 17:04:24,796 - INFO - [COMPLETE] Sync Complete! Added 23 new records. Updated 27 existing records.
+2026-03-30 17:04:24,797 - INFO - [SUCCESS] Script execution completed!
+2026-03-30 17:29:36,004 - INFO - [START] Intelligence Scout Phase 1.1...
+2026-03-30 17:29:36,005 - INFO - Initiating Hugging Face data fetch...
+2026-03-30 17:29:36,939 - INFO - HTTP Request: GET https://huggingface.co/api/models?filter=agent&sort=downloads&limit=50 "HTTP/1.1 200 OK"
+2026-03-30 17:29:36,947 - INFO - Industry matched: data -> Data Science
+2026-03-30 17:29:36,948 - INFO - Quantization detected: AWQ
+2026-03-30 17:29:36,950 - INFO - Review score calculated: 0.04102924799249751 (likes=21, downloads=511829)
+2026-03-30 17:29:36,951 - INFO - Processed model: bullpoint/Qwen3-Coder-Next-AWQ-4bit
+2026-03-30 17:29:36,953 - INFO - No industry keyword match; using 'Others'
+2026-03-30 17:29:36,954 - INFO - Context window detected: 6053
+2026-03-30 17:29:36,956 - INFO - Review score calculated: 5.0 (likes=2328, downloads=319691)
+2026-03-30 17:29:36,957 - INFO - Processed model: nvidia/personaplex-7b-v1
+2026-03-30 17:29:36,959 - INFO - Industry matched: image -> Computer Vision (CV)
+2026-03-30 17:29:36,961 - INFO - Context window detected: 7491
+2026-03-30 17:29:36,962 - INFO - Review score calculated: 0.8883563341872572 (likes=258, downloads=290423)
+2026-03-30 17:29:36,963 - INFO - Processed model: moonshotai/Kimi-VL-A3B-Instruct
+2026-03-30 17:29:36,965 - INFO - Industry matched: data -> Data Science
+2026-03-30 17:29:36,966 - INFO - Review score calculated: 0.026500479216999172 (likes=6, downloads=226410)
+2026-03-30 17:29:36,967 - INFO - Processed model: SWE-bench/SWE-agent-LM-7B
+2026-03-30 17:29:36,968 - INFO - Industry matched: data -> Data Science
+2026-03-30 17:29:36,969 - INFO - Quantization detected: GGUF
+2026-03-30 17:29:36,969 - INFO - Review score calculated: 0.13969894876541053 (likes=28, downloads=200430)
+2026-03-30 17:29:36,970 - INFO - Processed model: mradermacher/Crow-9B-Opus-4.6-Distill-Heretic_Qwen3.5-GGUF
+2026-03-30 17:29:36,971 - INFO - Industry matched: image -> Computer Vision (CV)
+2026-03-30 17:29:36,971 - INFO - Context window detected: 820
+2026-03-30 17:29:36,972 - INFO - Review score calculated: 2.9025533084415365 (likes=433, downloads=149178)
+2026-03-30 17:29:36,972 - INFO - Processed model: zai-org/AutoGLM-Phone-9B
+2026-03-30 17:29:36,973 - INFO - Industry matched: image -> Computer Vision (CV)
+2026-03-30 17:29:36,976 - INFO - Quantization detected: GGUF
+2026-03-30 17:29:36,977 - INFO - Context window detected: 9677
+2026-03-30 17:29:36,977 - INFO - Review score calculated: 0.31712292370193873 (likes=37, downloads=116673)
+2026-03-30 17:29:36,978 - INFO - Processed model: janhq/Jan-v2-VL-high-gguf
+2026-03-30 17:29:36,978 - INFO - Industry matched: data -> Data Science
+2026-03-30 17:29:36,978 - INFO - Quantization detected: GGUF
+2026-03-30 17:29:36,979 - INFO - Review score calculated: 2.362411409572141 (likes=243, downloads=102860)
+2026-03-30 17:29:36,979 - INFO - Processed model: Crownelius/Crow-9B-HERETIC-4.6
+2026-03-30 17:29:36,980 - INFO - No industry keyword match; using 'Others'
+2026-03-30 17:29:36,980 - INFO - Quantization detected: GGUF
+2026-03-30 17:29:36,981 - INFO - Review score calculated: 2.801435735814605 (likes=224, downloads=79958)
+2026-03-30 17:29:36,981 - INFO - Processed model: Tesslate/OmniCoder-9B-GGUF
+2026-03-30 17:29:36,983 - INFO - Industry matched: generation -> Creative Arts
+2026-03-30 17:29:36,983 - INFO - Quantization detected: GGUF
+2026-03-30 17:29:36,983 - INFO - Review score calculated: 0.09936406995230525 (likes=4, downloads=40255)
+2026-03-30 17:29:36,984 - INFO - Processed model: geoffmunn/Qwen3-4B-f16
+2026-03-30 17:29:36,984 - INFO - Industry matched: image -> Computer Vision (CV)
+2026-03-30 17:29:36,985 - INFO - Quantization detected: GGUF
+2026-03-30 17:29:36,985 - INFO - Context window detected: 9677
+2026-03-30 17:29:36,986 - INFO - Review score calculated: 0.734548252824513 (likes=21, downloads=28588)
+2026-03-30 17:29:36,986 - INFO - Processed model: janhq/Jan-v2-VL-med-gguf
+2026-03-30 17:29:36,986 - INFO - Industry matched: generation -> Creative Arts
+2026-03-30 17:29:36,987 - INFO - Quantization detected: GGUF
+2026-03-30 17:29:36,988 - INFO - Review score calculated: 0.03517658646404953 (likes=1, downloads=28427)
+2026-03-30 17:29:36,988 - INFO - Processed model: geoffmunn/Qwen3-14B-f16
+2026-03-30 17:29:36,989 - INFO - Industry matched: image -> Computer Vision (CV)
+2026-03-30 17:29:36,989 - INFO - Review score calculated: 5.0 (likes=530, downloads=28179)
+2026-03-30 17:29:36,990 - INFO - Processed model: Tesslate/OmniCoder-9B
+2026-03-30 17:29:36,990 - INFO - Industry matched: generation -> Creative Arts
+2026-03-30 17:29:36,991 - INFO - Quantization detected: GGUF
+2026-03-30 17:29:36,991 - INFO - Review score calculated: 2.010771992818672 (likes=56, downloads=27849)
+2026-03-30 17:29:36,992 - INFO - Processed model: janhq/Jan-code-4b-gguf
+2026-03-30 17:29:36,992 - INFO - No industry keyword match; using 'Others'
+2026-03-30 17:29:36,993 - INFO - Quantization detected: GGUF
+2026-03-30 17:29:36,993 - INFO - Review score calculated: 0.4441976679622432 (likes=12, downloads=27014)
+2026-03-30 17:29:36,993 - INFO - Processed model: LocoreMind/LocoOperator-4B-GGUF
+2026-03-30 17:29:36,994 - INFO - Industry matched: data -> Data Science
+2026-03-30 17:29:36,994 - INFO - Quantization detected: GGUF
+2026-03-30 17:29:36,998 - INFO - Review score calculated: 0.3456768785377868 (likes=8, downloads=23142)
+2026-03-30 17:29:37,006 - INFO - Processed model: mradermacher/Crow-9B-Opus-4.6-Distill-Heretic_Qwen3.5-i1-GGUF
+2026-03-30 17:29:37,007 - INFO - Industry matched: data -> Data Science
+2026-03-30 17:29:37,007 - INFO - Quantization detected: GGUF
+2026-03-30 17:29:37,008 - INFO - Review score calculated: 1.8806035425322545 (likes=43, downloads=22864)
+2026-03-30 17:29:37,008 - INFO - Processed model: Crownelius/Crow-4B-Opus-4.6-Distill-Heretic_Qwen3.5
+2026-03-30 17:29:37,008 - INFO - Industry matched: data -> Data Science
+2026-03-30 17:29:37,008 - INFO - Quantization detected: AWQ
+2026-03-30 17:29:37,009 - INFO - Review score calculated: 2.0438898450946645 (likes=38, downloads=18591)
+2026-03-30 17:29:37,009 - INFO - Processed model: mratsim/MiniMax-M2.5-BF16-INT4-AWQ
+2026-03-30 17:29:37,010 - INFO - Industry matched: generation -> Creative Arts
+2026-03-30 17:29:37,010 - INFO - Quantization detected: GGUF
+2026-03-30 17:29:37,010 - INFO - Review score calculated: 5.0 (likes=207, downloads=15589)
+2026-03-30 17:29:37,010 - INFO - Processed model: LocoreMind/LocoOperator-4B
+2026-03-30 17:29:37,011 - INFO - No industry keyword match; using 'Others'
+2026-03-30 17:29:37,011 - INFO - Quantization detected: GGUF
+2026-03-30 17:29:37,011 - INFO - Review score calculated: 0.4668222740913638 (likes=7, downloads=14994)
+2026-03-30 17:29:37,011 - INFO - Processed model: mradermacher/MiroThinker-1.7-mini-i1-GGUF
+2026-03-30 17:29:37,011 - INFO - Industry matched: generation -> Creative Arts
+2026-03-30 17:29:37,011 - INFO - Quantization detected: GGUF
+2026-03-30 17:29:37,011 - INFO - Review score calculated: 1.2860817376393257 (likes=18, downloads=13995)
+2026-03-30 17:29:37,011 - INFO - Processed model: bartowski/Tesslate_OmniCoder-9B-GGUF
+2026-03-30 17:29:37,014 - INFO - Industry matched: image -> Computer Vision (CV)
+2026-03-30 17:29:37,014 - INFO - Review score calculated: 0.0 (likes=0, downloads=12618)
+2026-03-30 17:29:37,015 - INFO - Processed model: cyankiwi/OmniCoder-9B-AWQ-BF16-INT4
+2026-03-30 17:29:37,015 - INFO - No industry keyword match; using 'Others'
+2026-03-30 17:29:37,015 - INFO - Quantization detected: GGUF
+2026-03-30 17:29:37,015 - INFO - Review score calculated: 0.0852587603376247 (likes=1, downloads=11728)
+2026-03-30 17:29:37,016 - INFO - Processed model: mradermacher/OpenSWE-72B-i1-GGUF
+2026-03-30 17:29:37,016 - INFO - Industry matched: image -> Computer Vision (CV)
+2026-03-30 17:29:37,016 - INFO - Review score calculated: 0.2673082063619353 (likes=3, downloads=11222)
+2026-03-30 17:29:37,017 - INFO - Processed model: cyankiwi/OmniCoder-9B-AWQ-4bit
+2026-03-30 17:29:37,017 - INFO - Industry matched: data -> Data Science
+2026-03-30 17:29:37,017 - INFO - Quantization detected: GGUF
+2026-03-30 17:29:37,018 - INFO - Review score calculated: 1.0945273631840797 (likes=11, downloads=10049)
+2026-03-30 17:29:37,018 - INFO - Processed model: mradermacher/Crow-4B-Opus-4.6-Distill-Heretic_Qwen3.5-i1-GGUF
+2026-03-30 17:29:37,018 - INFO - Industry matched: data -> Data Science
+2026-03-30 17:29:37,018 - INFO - Quantization detected: AWQ
+2026-03-30 17:29:37,019 - INFO - Review score calculated: 1.8043303929430634 (likes=18, downloads=9975)
+2026-03-30 17:29:37,019 - INFO - Processed model: mratsim/MiniMax-M2.5-FP8-INT4-AWQ
+2026-03-30 17:29:37,019 - INFO - Industry matched: image -> Computer Vision (CV)
+2026-03-30 17:29:37,020 - INFO - Quantization detected: GGUF
+2026-03-30 17:29:37,020 - INFO - Context window detected: 820
+2026-03-30 17:29:37,020 - INFO - Review score calculated: 0.0 (likes=0, downloads=9161)
+2026-03-30 17:29:37,021 - INFO - Processed model: Mungert/AutoGLM-Phone-9B-Multilingual-GGUF
+2026-03-30 17:29:37,021 - INFO - No industry keyword match; using 'Others'
+2026-03-30 17:29:37,022 - INFO - Quantization detected: GGUF
+2026-03-30 17:29:37,022 - INFO - Review score calculated: 0.6568575932737782 (likes=5, downloads=7611)
+2026-03-30 17:29:37,022 - INFO - Processed model: mradermacher/OmniCoder-9B-i1-GGUF
+2026-03-30 17:29:37,023 - INFO - Industry matched: security -> Cybersecurity
+2026-03-30 17:29:37,023 - INFO - Quantization detected: GGUF
+2026-03-30 17:29:37,023 - INFO - Review score calculated: 0.26770178021683844 (likes=2, downloads=7470)
+2026-03-30 17:29:37,023 - INFO - Processed model: mradermacher/prettybird_bce_basic_8B-i1-GGUF
+2026-03-30 17:29:37,024 - INFO - Industry matched: image -> Computer Vision (CV)
+2026-03-30 17:29:37,024 - INFO - Review score calculated: 2.957386745530313 (likes=22, downloads=7438)
+2026-03-30 17:29:37,024 - INFO - Processed model: Hcompany/Holo2-4B
+2026-03-30 17:29:37,024 - INFO - Industry matched: generation -> Creative Arts
+2026-03-30 17:29:37,025 - INFO - Quantization detected: GGUF
+2026-03-30 17:29:37,025 - INFO - Review score calculated: 0.27586206896551724 (likes=2, downloads=7249)
+2026-03-30 17:29:37,025 - INFO - Processed model: geoffmunn/Qwen3-32B-f16
+2026-03-30 17:29:37,025 - INFO - Industry matched: security -> Cybersecurity
+2026-03-30 17:29:37,026 - INFO - Quantization detected: GGUF
+2026-03-30 17:29:37,026 - INFO - Review score calculated: 0.1411631846414455 (likes=1, downloads=7083)
+2026-03-30 17:29:37,026 - INFO - Processed model: mradermacher/AgentDoG-Llama3.1-8B-i1-GGUF
+2026-03-30 17:29:37,026 - INFO - Industry matched: image -> Computer Vision (CV)
+2026-03-30 17:29:37,026 - INFO - Context window detected: 820
+2026-03-30 17:29:37,027 - INFO - Review score calculated: 5.0 (likes=231, downloads=6935)
+2026-03-30 17:29:37,027 - INFO - Processed model: zai-org/AutoGLM-Phone-9B-Multilingual
+2026-03-30 17:29:37,027 - INFO - Industry matched: generation -> Creative Arts
+2026-03-30 17:29:37,028 - INFO - Quantization detected: GGUF
+2026-03-30 17:29:37,028 - INFO - Review score calculated: 0.1464343242055938 (likes=1, downloads=6828)
+2026-03-30 17:29:37,028 - INFO - Processed model: geoffmunn/Qwen3-8B-f16
+2026-03-30 17:29:37,029 - INFO - Industry matched: security -> Cybersecurity
+2026-03-30 17:29:37,029 - INFO - Quantization detected: GGUF
+2026-03-30 17:29:37,029 - INFO - Review score calculated: 0.31298904538341155 (likes=2, downloads=6389)
+2026-03-30 17:29:37,029 - INFO - Processed model: mradermacher/AgentDoG-Qwen2.5-7B-i1-GGUF
+2026-03-30 17:29:37,029 - INFO - Industry matched: vision -> Computer Vision (CV)
+2026-03-30 17:29:37,030 - INFO - Quantization detected: GGUF
+2026-03-30 17:29:37,030 - INFO - Review score calculated: 0.0 (likes=0, downloads=6239)
+2026-03-30 17:29:37,030 - INFO - Processed model: mradermacher/Qwen3-VL-8B-Interleave-Thinking-i1-GGUF
+2026-03-30 17:29:37,030 - INFO - Industry matched: security -> Cybersecurity
+2026-03-30 17:29:37,031 - INFO - Quantization detected: GGUF
+2026-03-30 17:29:37,031 - INFO - Review score calculated: 0.0 (likes=0, downloads=6191)
+2026-03-30 17:29:37,031 - INFO - Processed model: mradermacher/AgentDoG-FG-Qwen2.5-7B-i1-GGUF
+2026-03-30 17:29:37,031 - INFO - Industry matched: data -> Data Science
+2026-03-30 17:29:37,031 - INFO - Quantization detected: GGUF
+2026-03-30 17:29:37,032 - INFO - Review score calculated: 0.0 (likes=0, downloads=6005)
+2026-03-30 17:29:37,032 - INFO - Processed model: mradermacher/SmartSnap-Qwen2.5-7B-i1-GGUF
+2026-03-30 17:29:37,032 - INFO - Industry matched: data -> Data Science
+2026-03-30 17:29:37,034 - INFO - Quantization detected: GGUF
+2026-03-30 17:29:37,035 - INFO - Review score calculated: 0.0 (likes=0, downloads=6002)
+2026-03-30 17:29:37,035 - INFO - Processed model: mradermacher/Cicikus_v2_3B-i1-GGUF
+2026-03-30 17:29:37,035 - INFO - Industry matched: data -> Data Science
+2026-03-30 17:29:37,035 - INFO - Quantization detected: GGUF
+2026-03-30 17:29:37,035 - INFO - Review score calculated: 0.0 (likes=0, downloads=5893)
+2026-03-30 17:29:37,035 - INFO - Processed model: mradermacher/Cicikus-v3-1.4B-i1-GGUF
+2026-03-30 17:29:37,036 - INFO - Industry matched: image -> Computer Vision (CV)
+2026-03-30 17:29:37,036 - INFO - Quantization detected: GGUF
+2026-03-30 17:29:37,037 - INFO - Review score calculated: 3.4453057708871664 (likes=20, downloads=5804)
+2026-03-30 17:29:37,037 - INFO - Processed model: thelamapi/next-ocr
+2026-03-30 17:29:37,037 - INFO - Industry matched: image -> Computer Vision (CV)
+2026-03-30 17:29:37,037 - INFO - Quantization detected: GGUF
+2026-03-30 17:29:37,037 - INFO - Context window detected: 9677
+2026-03-30 17:29:37,037 - INFO - Review score calculated: 0.7095973035302465 (likes=4, downloads=5636)
+2026-03-30 17:29:37,037 - INFO - Processed model: janhq/Jan-v2-VL-max-gguf
+2026-03-30 17:29:37,037 - INFO - No industry keyword match; using 'Others'
+2026-03-30 17:29:37,037 - INFO - Quantization detected: GGUF
+2026-03-30 17:29:37,037 - INFO - Review score calculated: 0.0 (likes=0, downloads=5612)
+2026-03-30 17:29:37,037 - INFO - Processed model: mradermacher/OpenSWE-32B-i1-GGUF
+2026-03-30 17:29:37,042 - INFO - No industry keyword match; using 'Others'
+2026-03-30 17:29:37,042 - INFO - Quantization detected: GGUF
+2026-03-30 17:29:37,042 - INFO - Review score calculated: 0.7237199203908088 (likes=4, downloads=5526)
+2026-03-30 17:29:37,042 - INFO - Processed model: mradermacher/MiroThinker-v1.5-30B-i1-GGUF
+2026-03-30 17:29:37,042 - INFO - Industry matched: generation -> Creative Arts
+2026-03-30 17:29:37,043 - INFO - Quantization detected: GGUF
+2026-03-30 17:29:37,043 - INFO - Review score calculated: 4.01899890390939 (likes=22, downloads=5473)
+2026-03-30 17:29:37,043 - INFO - Processed model: Andycurrent/gemma-3-4b-it-uncensored-v2-GGUF
+2026-03-30 17:29:37,044 - INFO - No industry keyword match; using 'Others'
+2026-03-30 17:29:37,044 - INFO - Quantization detected: GGUF
+2026-03-30 17:29:37,045 - INFO - Review score calculated: 0.0 (likes=0, downloads=5424)
+2026-03-30 17:29:37,045 - INFO - Processed model: mradermacher/UI-Venus-1.5-30B-A3B-i1-GGUF
+2026-03-30 17:29:37,045 - INFO - Industry matched: data -> Data Science
+2026-03-30 17:29:37,045 - INFO - Quantization detected: GGUF
+2026-03-30 17:29:37,045 - INFO - Review score calculated: 0.7629219912263971 (likes=4, downloads=5242)
+2026-03-30 17:29:37,046 - INFO - Processed model: TeichAI/Qwen3-4B-Thinking-2507-MiMo-V2-Flash-Distill-GGUF
+2026-03-30 17:29:37,046 - INFO - Industry matched: learning -> Education
+2026-03-30 17:29:37,046 - INFO - Quantization detected: GGUF
+2026-03-30 17:29:37,046 - INFO - Review score calculated: 0.0 (likes=0, downloads=5228)
+2026-03-30 17:29:37,047 - INFO - Processed model: mradermacher/Agent-STAR-RL-7B-i1-GGUF
+2026-03-30 17:29:37,047 - INFO - Industry matched: data -> Data Science
+2026-03-30 17:29:37,047 - INFO - Quantization detected: GGUF
+2026-03-30 17:29:37,047 - INFO - Review score calculated: 0.19316206297083252 (likes=1, downloads=5176)
+2026-03-30 17:29:37,048 - INFO - Processed model: mradermacher/Crow_Qwen9B_OpusUCH-i1-GGUF
+2026-03-30 17:29:37,048 - INFO - Industry matched: data -> Data Science
+2026-03-30 17:29:37,048 - INFO - Quantization detected: GGUF
+2026-03-30 17:29:37,048 - INFO - Review score calculated: 0.0 (likes=0, downloads=4992)
+2026-03-30 17:29:37,048 - INFO - Processed model: mradermacher/OpenAgent-i1-GGUF
+2026-03-30 17:29:37,049 - INFO - Successfully fetched 50 models
+2026-03-30 17:29:37,207 - INFO - Architect candidates selected: 4
+2026-03-30 17:29:39,131 - INFO - HTTP Request: GET https://api.notion.com/v1/data_sources/3307c76c-b92a-8091-a9a0-000b7bf2a71e "HTTP/1.1 200 OK"
+2026-03-30 17:29:39,135 - INFO - Resolved data source: 3307c76c-b92a-8091-a9a0-000b7bf2a71e
+2026-03-30 17:29:40,536 - INFO - HTTP Request: POST https://api.notion.com/v1/data_sources/3307c76c-b92a-8091-a9a0-000b7bf2a71e/query "HTTP/1.1 200 OK"
+2026-03-30 17:29:42,219 - INFO - HTTP Request: POST https://api.notion.com/v1/data_sources/3307c76c-b92a-8091-a9a0-000b7bf2a71e/query "HTTP/1.1 200 OK"
+2026-03-30 17:29:42,760 - INFO - HTTP Request: GET https://api.notion.com/v1/data_sources/3307c76c-b92a-8091-a9a0-000b7bf2a71e "HTTP/1.1 200 OK"
+2026-03-30 17:29:42,763 - INFO - Starting sync to Data Source: 3307c76c-b92a-8091-a9a0-000b7bf2a71e...
+2026-03-30 17:29:42,767 - INFO - [ELITE-ARCHITECT] Processing bullpoint/Qwen3-Coder-Next-AWQ-4bit
+2026-03-30 17:29:42,768 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-30 17:30:00,279 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent "HTTP/1.1 200 OK"
+2026-03-30 17:30:00,302 - INFO - [SKIPPED] Existing model already enriched: bullpoint/Qwen3-Coder-Next-AWQ-4bit
+2026-03-30 17:30:00,305 - INFO - [ELITE-ARCHITECT] Processing nvidia/personaplex-7b-v1
+2026-03-30 17:30:00,306 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-30 17:30:12,533 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent "HTTP/1.1 200 OK"
+2026-03-30 17:30:12,553 - INFO - [SKIPPED] Existing model already enriched: nvidia/personaplex-7b-v1
+2026-03-30 17:30:12,554 - INFO - [ELITE-ARCHITECT] Processing moonshotai/Kimi-VL-A3B-Instruct
+2026-03-30 17:30:12,555 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-30 17:30:22,854 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent "HTTP/1.1 200 OK"
+2026-03-30 17:30:22,858 - INFO - [SKIPPED] Existing model already enriched: moonshotai/Kimi-VL-A3B-Instruct
+2026-03-30 17:30:22,858 - INFO - [ELITE-ARCHITECT] Processing SWE-bench/SWE-agent-LM-7B
+2026-03-30 17:30:22,865 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-30 17:30:32,615 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent "HTTP/1.1 200 OK"
+2026-03-30 17:30:32,615 - INFO - [SKIPPED] Existing model already enriched: SWE-bench/SWE-agent-LM-7B
+2026-03-30 17:30:32,615 - INFO - [SKIPPED] Model already exists with no architect pass: mradermacher/Crow-9B-Opus-4.6-Distill-Heretic_Qwen3.5-GGUF
+2026-03-30 17:30:32,615 - INFO - [SKIPPED] Model already exists with no architect pass: zai-org/AutoGLM-Phone-9B
+2026-03-30 17:30:32,615 - INFO - [SKIPPED] Model already exists with no architect pass: janhq/Jan-v2-VL-high-gguf
+2026-03-30 17:30:32,615 - INFO - [SKIPPED] Model already exists with no architect pass: Crownelius/Crow-9B-HERETIC-4.6
+2026-03-30 17:30:32,624 - INFO - [SKIPPED] Model already exists with no architect pass: Tesslate/OmniCoder-9B-GGUF
+2026-03-30 17:30:32,625 - INFO - [SKIPPED] Model already exists with no architect pass: geoffmunn/Qwen3-4B-f16
+2026-03-30 17:30:32,625 - INFO - [SKIPPED] Model already exists with no architect pass: janhq/Jan-v2-VL-med-gguf
+2026-03-30 17:30:32,626 - INFO - [ELITE-ARCHITECT] Processing geoffmunn/Qwen3-14B-f16
+2026-03-30 17:30:32,626 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-30 17:30:47,816 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent "HTTP/1.1 200 OK"
+2026-03-30 17:30:49,127 - INFO - HTTP Request: PATCH https://api.notion.com/v1/pages/3337c76c-b92a-819b-98e5-e63bf5f5ebd2 "HTTP/1.1 200 OK"
+2026-03-30 17:30:49,133 - INFO - [ENRICHING EXISTING] Updated architect payload for existing model: geoffmunn/Qwen3-14B-f16
+2026-03-30 17:30:50,135 - INFO - [SKIPPED] Model already exists with no architect pass: Tesslate/OmniCoder-9B
+2026-03-30 17:30:50,138 - INFO - [SKIPPED] Model already exists with no architect pass: janhq/Jan-code-4b-gguf
+2026-03-30 17:30:50,140 - INFO - [SKIPPED] Model already exists with no architect pass: LocoreMind/LocoOperator-4B-GGUF
+2026-03-30 17:30:50,142 - INFO - [SKIPPED] Model already exists with no architect pass: mradermacher/Crow-9B-Opus-4.6-Distill-Heretic_Qwen3.5-i1-GGUF
+2026-03-30 17:30:50,145 - INFO - [SKIPPED] Model already exists with no architect pass: Crownelius/Crow-4B-Opus-4.6-Distill-Heretic_Qwen3.5
+2026-03-30 17:30:50,152 - INFO - [SKIPPED] Model already exists with no architect pass: mratsim/MiniMax-M2.5-BF16-INT4-AWQ
+2026-03-30 17:30:50,154 - INFO - [SKIPPED] Model already exists with no architect pass: LocoreMind/LocoOperator-4B
+2026-03-30 17:30:50,157 - INFO - [SKIPPED] Model already exists with no architect pass: mradermacher/MiroThinker-1.7-mini-i1-GGUF
+2026-03-30 17:30:50,160 - INFO - [SKIPPED] Model already exists with no architect pass: bartowski/Tesslate_OmniCoder-9B-GGUF
+2026-03-30 17:30:50,163 - INFO - [SKIPPED] Model already exists with no architect pass: cyankiwi/OmniCoder-9B-AWQ-BF16-INT4
+2026-03-30 17:30:50,170 - INFO - [SKIPPED] Model already exists with no architect pass: mradermacher/OpenSWE-72B-i1-GGUF
+2026-03-30 17:30:50,171 - INFO - [SKIPPED] Model already exists with no architect pass: cyankiwi/OmniCoder-9B-AWQ-4bit
+2026-03-30 17:30:50,171 - INFO - [SKIPPED] Model already exists with no architect pass: mradermacher/Crow-4B-Opus-4.6-Distill-Heretic_Qwen3.5-i1-GGUF
+2026-03-30 17:30:50,172 - INFO - [ELITE-ARCHITECT] Processing mratsim/MiniMax-M2.5-FP8-INT4-AWQ
+2026-03-30 17:30:50,173 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-30 17:31:05,585 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent "HTTP/1.1 200 OK"
+2026-03-30 17:31:06,692 - INFO - HTTP Request: PATCH https://api.notion.com/v1/pages/3337c76c-b92a-8112-982b-c5523a227498 "HTTP/1.1 200 OK"
+2026-03-30 17:31:06,694 - INFO - [ENRICHING EXISTING] Updated architect payload for existing model: mratsim/MiniMax-M2.5-FP8-INT4-AWQ
+2026-03-30 17:31:07,697 - INFO - [SKIPPED] Model already exists with no architect pass: Mungert/AutoGLM-Phone-9B-Multilingual-GGUF
+2026-03-30 17:31:07,700 - INFO - [SYNC-ONLY] Syncing mradermacher/OmniCoder-9B-i1-GGUF without architect suite
+2026-03-30 17:31:09,808 - INFO - HTTP Request: POST https://api.notion.com/v1/pages "HTTP/1.1 200 OK"
+2026-03-30 17:31:09,815 - INFO - [CREATED NEW] Successfully created page for: mradermacher/OmniCoder-9B-i1-GGUF
+2026-03-30 17:31:10,818 - INFO - [SYNC-ONLY] Syncing mradermacher/prettybird_bce_basic_8B-i1-GGUF without architect suite
+2026-03-30 17:31:11,408 - INFO - HTTP Request: POST https://api.notion.com/v1/pages "HTTP/1.1 200 OK"
+2026-03-30 17:31:11,414 - INFO - [CREATED NEW] Successfully created page for: mradermacher/prettybird_bce_basic_8B-i1-GGUF
+2026-03-30 17:31:12,417 - INFO - [SYNC-ONLY] Syncing Hcompany/Holo2-4B without architect suite
+2026-03-30 17:31:13,077 - INFO - HTTP Request: POST https://api.notion.com/v1/pages "HTTP/1.1 200 OK"
+2026-03-30 17:31:13,080 - INFO - [CREATED NEW] Successfully created page for: Hcompany/Holo2-4B
+2026-03-30 17:31:14,083 - INFO - [SKIPPED] Model already exists with no architect pass: geoffmunn/Qwen3-32B-f16
+2026-03-30 17:31:14,085 - INFO - [SYNC-ONLY] Syncing mradermacher/AgentDoG-Llama3.1-8B-i1-GGUF without architect suite
+2026-03-30 17:31:14,690 - INFO - HTTP Request: POST https://api.notion.com/v1/pages "HTTP/1.1 200 OK"
+2026-03-30 17:31:14,697 - INFO - [CREATED NEW] Successfully created page for: mradermacher/AgentDoG-Llama3.1-8B-i1-GGUF
+2026-03-30 17:31:15,698 - INFO - [SKIPPED] Model already exists with no architect pass: zai-org/AutoGLM-Phone-9B-Multilingual
+2026-03-30 17:31:15,698 - INFO - [SYNC-ONLY] Syncing geoffmunn/Qwen3-8B-f16 without architect suite
+2026-03-30 17:31:16,285 - INFO - HTTP Request: POST https://api.notion.com/v1/pages "HTTP/1.1 200 OK"
+2026-03-30 17:31:16,285 - INFO - [CREATED NEW] Successfully created page for: geoffmunn/Qwen3-8B-f16
+2026-03-30 17:31:17,295 - INFO - [SYNC-ONLY] Syncing mradermacher/AgentDoG-Qwen2.5-7B-i1-GGUF without architect suite
+2026-03-30 17:31:17,865 - INFO - HTTP Request: POST https://api.notion.com/v1/pages "HTTP/1.1 200 OK"
+2026-03-30 17:31:17,865 - INFO - [CREATED NEW] Successfully created page for: mradermacher/AgentDoG-Qwen2.5-7B-i1-GGUF
+2026-03-30 17:31:18,869 - INFO - [SYNC-ONLY] Syncing mradermacher/Qwen3-VL-8B-Interleave-Thinking-i1-GGUF without architect suite
+2026-03-30 17:31:19,645 - INFO - HTTP Request: POST https://api.notion.com/v1/pages "HTTP/1.1 200 OK"
+2026-03-30 17:31:19,648 - INFO - [CREATED NEW] Successfully created page for: mradermacher/Qwen3-VL-8B-Interleave-Thinking-i1-GGUF
+2026-03-30 17:31:20,652 - INFO - [SYNC-ONLY] Syncing mradermacher/AgentDoG-FG-Qwen2.5-7B-i1-GGUF without architect suite
+2026-03-30 17:31:21,415 - INFO - HTTP Request: POST https://api.notion.com/v1/pages "HTTP/1.1 200 OK"
+2026-03-30 17:31:21,415 - INFO - [CREATED NEW] Successfully created page for: mradermacher/AgentDoG-FG-Qwen2.5-7B-i1-GGUF
+2026-03-30 17:31:22,425 - INFO - [SYNC-ONLY] Syncing mradermacher/SmartSnap-Qwen2.5-7B-i1-GGUF without architect suite
+2026-03-30 17:31:23,254 - INFO - HTTP Request: POST https://api.notion.com/v1/pages "HTTP/1.1 200 OK"
+2026-03-30 17:31:23,257 - INFO - [CREATED NEW] Successfully created page for: mradermacher/SmartSnap-Qwen2.5-7B-i1-GGUF
+2026-03-30 17:31:24,259 - INFO - [SYNC-ONLY] Syncing mradermacher/Cicikus_v2_3B-i1-GGUF without architect suite
+2026-03-30 17:31:24,932 - INFO - HTTP Request: POST https://api.notion.com/v1/pages "HTTP/1.1 200 OK"
+2026-03-30 17:31:24,936 - INFO - [CREATED NEW] Successfully created page for: mradermacher/Cicikus_v2_3B-i1-GGUF
+2026-03-30 17:31:25,938 - INFO - [SYNC-ONLY] Syncing mradermacher/Cicikus-v3-1.4B-i1-GGUF without architect suite
+2026-03-30 17:31:26,544 - INFO - HTTP Request: POST https://api.notion.com/v1/pages "HTTP/1.1 200 OK"
+2026-03-30 17:31:26,544 - INFO - [CREATED NEW] Successfully created page for: mradermacher/Cicikus-v3-1.4B-i1-GGUF
+2026-03-30 17:31:27,555 - INFO - [SYNC-ONLY] Syncing thelamapi/next-ocr without architect suite
+2026-03-30 17:31:28,132 - INFO - HTTP Request: POST https://api.notion.com/v1/pages "HTTP/1.1 200 OK"
+2026-03-30 17:31:28,133 - INFO - [CREATED NEW] Successfully created page for: thelamapi/next-ocr
+2026-03-30 17:31:29,134 - INFO - [SYNC-ONLY] Syncing janhq/Jan-v2-VL-max-gguf without architect suite
+2026-03-30 17:31:29,715 - INFO - HTTP Request: POST https://api.notion.com/v1/pages "HTTP/1.1 200 OK"
+2026-03-30 17:31:29,715 - INFO - [CREATED NEW] Successfully created page for: janhq/Jan-v2-VL-max-gguf
+2026-03-30 17:31:30,726 - INFO - [SYNC-ONLY] Syncing mradermacher/OpenSWE-32B-i1-GGUF without architect suite
+2026-03-30 17:31:31,384 - INFO - HTTP Request: POST https://api.notion.com/v1/pages "HTTP/1.1 200 OK"
+2026-03-30 17:31:31,387 - INFO - [CREATED NEW] Successfully created page for: mradermacher/OpenSWE-32B-i1-GGUF
+2026-03-30 17:31:32,389 - INFO - [SYNC-ONLY] Syncing mradermacher/MiroThinker-v1.5-30B-i1-GGUF without architect suite
+2026-03-30 17:31:33,349 - INFO - HTTP Request: POST https://api.notion.com/v1/pages "HTTP/1.1 200 OK"
+2026-03-30 17:31:33,352 - INFO - [CREATED NEW] Successfully created page for: mradermacher/MiroThinker-v1.5-30B-i1-GGUF
+2026-03-30 17:31:34,354 - INFO - [SYNC-ONLY] Syncing Andycurrent/gemma-3-4b-it-uncensored-v2-GGUF without architect suite
+2026-03-30 17:31:34,958 - INFO - HTTP Request: POST https://api.notion.com/v1/pages "HTTP/1.1 200 OK"
+2026-03-30 17:31:34,966 - INFO - [CREATED NEW] Successfully created page for: Andycurrent/gemma-3-4b-it-uncensored-v2-GGUF
+2026-03-30 17:31:35,970 - INFO - [SYNC-ONLY] Syncing mradermacher/UI-Venus-1.5-30B-A3B-i1-GGUF without architect suite
+2026-03-30 17:31:36,545 - INFO - HTTP Request: POST https://api.notion.com/v1/pages "HTTP/1.1 200 OK"
+2026-03-30 17:31:36,548 - INFO - [CREATED NEW] Successfully created page for: mradermacher/UI-Venus-1.5-30B-A3B-i1-GGUF
+2026-03-30 17:31:37,551 - INFO - [SYNC-ONLY] Syncing TeichAI/Qwen3-4B-Thinking-2507-MiMo-V2-Flash-Distill-GGUF without architect suite
+2026-03-30 17:31:38,292 - INFO - HTTP Request: POST https://api.notion.com/v1/pages "HTTP/1.1 200 OK"
+2026-03-30 17:31:38,296 - INFO - [CREATED NEW] Successfully created page for: TeichAI/Qwen3-4B-Thinking-2507-MiMo-V2-Flash-Distill-GGUF
+2026-03-30 17:31:39,298 - INFO - [SYNC-ONLY] Syncing mradermacher/Agent-STAR-RL-7B-i1-GGUF without architect suite
+2026-03-30 17:31:39,863 - INFO - HTTP Request: POST https://api.notion.com/v1/pages "HTTP/1.1 200 OK"
+2026-03-30 17:31:39,866 - INFO - [CREATED NEW] Successfully created page for: mradermacher/Agent-STAR-RL-7B-i1-GGUF
+2026-03-30 17:31:40,869 - INFO - [SYNC-ONLY] Syncing mradermacher/Crow_Qwen9B_OpusUCH-i1-GGUF without architect suite
+2026-03-30 17:31:41,537 - INFO - HTTP Request: POST https://api.notion.com/v1/pages "HTTP/1.1 200 OK"
+2026-03-30 17:31:41,543 - INFO - [CREATED NEW] Successfully created page for: mradermacher/Crow_Qwen9B_OpusUCH-i1-GGUF
+2026-03-30 17:31:42,546 - INFO - [SYNC-ONLY] Syncing mradermacher/OpenAgent-i1-GGUF without architect suite
+2026-03-30 17:31:43,415 - INFO - HTTP Request: POST https://api.notion.com/v1/pages "HTTP/1.1 200 OK"
+2026-03-30 17:31:43,415 - INFO - [CREATED NEW] Successfully created page for: mradermacher/OpenAgent-i1-GGUF
+2026-03-30 17:31:44,425 - INFO - [COMPLETE] Sync Complete! Added 21 new records. Updated 2 existing records.
+2026-03-30 17:31:44,426 - INFO - [SUCCESS] Script execution completed!

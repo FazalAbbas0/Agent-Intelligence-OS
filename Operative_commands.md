@@ -14,6 +14,12 @@ Install dependencies:
 .\.venv\Scripts\python.exe -m pip install -r requirements.txt
 ```
 
+Force SDK migration to current Gemini client library:
+```powershell
+pip uninstall google-generativeai -y
+pip install google-genai
+```
+
 Upgrade pip (optional):
 ```powershell
 .\.venv\Scripts\python.exe -m pip install --upgrade pip
@@ -29,6 +35,11 @@ Run sync now:
 Run with unbuffered live logs:
 ```powershell
 .\.venv\Scripts\python.exe -u main.py
+```
+
+Run and print exit code explicitly:
+```powershell
+& ".\.venv\Scripts\python.exe" main.py; Write-Output "EXIT:$LASTEXITCODE"
 ```
 
 Syntax check before run:
@@ -79,7 +90,12 @@ Show installed notion client version:
 
 Show Gemini SDK availability:
 ```powershell
-.\.venv\Scripts\python.exe -c "import google.generativeai as g; print('google-generativeai OK')"
+.\.venv\Scripts\python.exe -c "from google import genai; print('google-genai OK')"
+```
+
+Show installed Gemini package details:
+```powershell
+.\.venv\Scripts\python.exe -m pip show google-genai
 ```
 
 Check current env keys used by main.py:
@@ -104,7 +120,12 @@ Get-Content .\metadata\factory_health.log -Tail 120
 
 Find architect vs sync-only rows in logs:
 ```powershell
-Select-String -Path .\metadata\factory_health.log -Pattern "\[ARCHITECT\]|\[SYNC-ONLY\]" | Select-Object -Last 40
+Select-String -Path .\metadata\factory_health.log -Pattern "\[ELITE-ARCHITECT\]|\[SYNC-ONLY\]" | Select-Object -Last 40
+```
+
+Find final row action outcomes in logs:
+```powershell
+Select-String -Path .\metadata\factory_health.log -Pattern "\[SKIPPED\]|\[ENRICHING EXISTING\]|\[CREATED NEW\]|\[COMPLETE\]" | Select-Object -Last 80
 ```
 
 Run and capture output to file:
@@ -134,6 +155,21 @@ $env:MODEL_LIMIT="2"; .\.venv\Scripts\python.exe main.py
 Disable architect generation for one run:
 ```powershell
 $env:GEMINI_API_KEY=""; .\.venv\Scripts\python.exe main.py
+```
+
+Check if Gemini model-availability 404 occurred in last run:
+```powershell
+Select-String -Path .\metadata\factory_health.log -Pattern "Gemini architect generation failed|404 .*generateContent" | Select-Object -Last 20
+```
+
+Find live enrichment outcomes quickly:
+```powershell
+Select-String -Path .\metadata\factory_health.log -Pattern "\[ENRICHING EXISTING\]|\[SKIPPED\]|\[CREATED NEW\]" | Select-Object -Last 40
+```
+
+Show architect candidate selection count from latest run:
+```powershell
+Select-String -Path .\metadata\factory_health.log -Pattern "Architect candidates selected" | Select-Object -Last 5
 ```
 
 ## 7) Safety Notes

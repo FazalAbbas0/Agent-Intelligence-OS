@@ -10,7 +10,7 @@ from notion_client.errors import APIResponseError
 from dotenv import load_dotenv
 
 try:
-    import google.generativeai as genai
+    from google import genai
 except ImportError:
     genai = None
 
@@ -35,13 +35,15 @@ hf_api = HfApi()
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "").strip()
 HF_TOKEN = os.getenv("HF_TOKEN", "").strip()
 MODEL_LIMIT = int(os.getenv("MODEL_LIMIT", "4"))
+ARCHITECT_MODEL = os.getenv("GEMINI_ARCHITECT_MODEL", "gemini-2.0-flash").strip()
+client = None
 
 if genai and GEMINI_API_KEY:
-    genai.configure(api_key=GEMINI_API_KEY)
+    client = genai.Client(api_key=GEMINI_API_KEY)
 elif not GEMINI_API_KEY:
     logger.warning("GEMINI_API_KEY not set. Architect suite generation will be skipped.")
 else:
-    logger.warning("google-generativeai is not installed. Architect suite generation will be skipped.")
+    logger.warning("google-genai is not installed. Architect suite generation will be skipped.")
 
 # Industry mapping
 INDUSTRY_MAP = {
@@ -195,8 +197,8 @@ def _extract_section(full_text, start_marker, end_markers):
 
 
 def get_architect_suite(model_id, industry):
-    """Generate monetization-ready implementation suite with Gemini 1.5 Flash."""
-    if not genai or not GEMINI_API_KEY:
+    """Generate monetization-ready implementation suite with Gemini 2.0 Flash."""
+    if not client:
         return None
 
     prompt = f"""
@@ -235,18 +237,10 @@ Formatting rules:
 """.strip()
 
     try:
-        result = None
-        last_error = None
-        for model_name in ["gemini-1.5-flash", "gemini-1.5-flash-latest"]:
-            try:
-                model = genai.GenerativeModel(model_name)
-                result = model.generate_content(prompt)
-                break
-            except Exception as e:
-                last_error = e
-
-        if result is None:
-            raise last_error if last_error else RuntimeError("Gemini generation returned no result.")
+        result = client.models.generate_content(
+            model=ARCHITECT_MODEL,
+            contents=prompt,
+        )
 
         full_text = (result.text or "").strip()
         if not full_text:
@@ -379,7 +373,7 @@ def _is_rich_text_empty(prop):
     rich_text_items = (prop or {}).get("rich_text", [])
     for item in rich_text_items:
         plain_text = (item.get("plain_text") or "").strip()
-        if plain_text:
+        if plain_text and plain_text.lower() not in {"-", ".", "n/a"}:
             return False
     return True
 
@@ -530,8 +524,26 @@ def sync_to_notion(df):
         try:
             model_exists = row["Name"] in existing_ids
             should_architect = bool(row.get("Architect Candidate", False))
+            force_enrichment = False
+            existing_page = {}
 
-            if model_exists and not should_architect:
+            if model_exists:
+                existing_page = existing_pages.get(row["Name"], {})
+                existing_props = existing_page.get("properties", {})
+                docker_field_type = property_types.get("Docker Payload")
+                gumroad_field_type = property_types.get("Gumroad Copy")
+
+                docker_missing = (
+                    _is_rich_text_empty(existing_props.get("Docker Payload", {}))
+                )
+                gumroad_missing = (
+                    _is_rich_text_empty(existing_props.get("Gumroad Copy", {}))
+                )
+                force_enrichment = docker_missing or gumroad_missing
+
+            run_architect_pass = should_architect or force_enrichment
+
+            if model_exists and not run_architect_pass:
                 skipped_name = row["Name"].split('/')[-1].replace('-', ' ').title()
                 logger.info(f"[SKIPPED] Model already exists with no architect pass: {row['Name']}")
                 print(f"[SKIPPED] {skipped_name}")
@@ -558,14 +570,13 @@ def sync_to_notion(df):
 
             architect_suite = None
             industry_label = row.get("Industry", "Others")
-            if should_architect:
+            if run_architect_pass:
                 logger.info(f"[ELITE-ARCHITECT] Processing {row['Name']}")
                 architect_suite = get_architect_suite(row["Name"], industry_label)
             else:
                 logger.info(f"[SYNC-ONLY] Syncing {row['Name']} without architect suite")
 
-            if model_exists and should_architect:
-                existing_page = existing_pages.get(row["Name"], {})
+            if model_exists and run_architect_pass:
                 existing_props = existing_page.get("properties", {})
                 update_payload = {}
 
