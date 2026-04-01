@@ -4519,3 +4519,71 @@ httpx.ConnectError: [Errno 11001] getaddrinfo failed
 2026-03-30 17:31:43,415 - INFO - [CREATED NEW] Successfully created page for: mradermacher/OpenAgent-i1-GGUF
 2026-03-30 17:31:44,425 - INFO - [COMPLETE] Sync Complete! Added 21 new records. Updated 2 existing records.
 2026-03-30 17:31:44,426 - INFO - [SUCCESS] Script execution completed!
+2026-04-01 15:45:22,704 - INFO - [START] Intelligence Scout Phase 1.1...
+2026-04-01 15:45:22,704 - INFO - Initiating Hugging Face data fetch...
+2026-04-01 15:45:23,037 - ERROR - [FATAL] Error: [Errno 11001] getaddrinfo failed
+Traceback (most recent call last):
+  File "C:\Users\My Computer\Agent-Intelligence-OS\.venv\Lib\site-packages\httpx\_transports\default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "C:\Users\My Computer\Agent-Intelligence-OS\.venv\Lib\site-packages\httpx\_transports\default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\My Computer\Agent-Intelligence-OS\.venv\Lib\site-packages\httpcore\_sync\connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "C:\Users\My Computer\Agent-Intelligence-OS\.venv\Lib\site-packages\httpcore\_sync\connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\My Computer\Agent-Intelligence-OS\.venv\Lib\site-packages\httpcore\_sync\connection.py", line 101, in handle_request
+    raise exc
+  File "C:\Users\My Computer\Agent-Intelligence-OS\.venv\Lib\site-packages\httpcore\_sync\connection.py", line 78, in handle_request
+    stream = self._connect(request)
+             ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\My Computer\Agent-Intelligence-OS\.venv\Lib\site-packages\httpcore\_sync\connection.py", line 124, in _connect
+    stream = self._network_backend.connect_tcp(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\My Computer\Agent-Intelligence-OS\.venv\Lib\site-packages\httpcore\_backends\sync.py", line 207, in connect_tcp
+    with map_exceptions(exc_map):
+  File "C:\Users\My Computer\AppData\Local\Programs\Python\Python311\Lib\contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "C:\Users\My Computer\Agent-Intelligence-OS\.venv\Lib\site-packages\httpcore\_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\My Computer\Agent-Intelligence-OS\main.py", line 712, in <module>
+    cleaned_df = fetch_and_clean_data()
+                 ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\My Computer\Agent-Intelligence-OS\main.py", line 429, in fetch_and_clean_data
+    for m in models:
+  File "C:\Users\My Computer\Agent-Intelligence-OS\.venv\Lib\site-packages\huggingface_hub\hf_api.py", line 2402, in list_models
+    for item in items:
+  File "C:\Users\My Computer\Agent-Intelligence-OS\.venv\Lib\site-packages\huggingface_hub\utils\_pagination.py", line 36, in paginate
+    r = session.get(path, params=params, headers=headers)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\My Computer\Agent-Intelligence-OS\.venv\Lib\site-packages\httpx\_client.py", line 1053, in get
+    return self.request(
+           ^^^^^^^^^^^^^
+  File "C:\Users\My Computer\Agent-Intelligence-OS\.venv\Lib\site-packages\httpx\_client.py", line 825, in request
+    return self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\My Computer\Agent-Intelligence-OS\.venv\Lib\site-packages\httpx\_client.py", line 914, in send
+    response = self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\My Computer\Agent-Intelligence-OS\.venv\Lib\site-packages\httpx\_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\My Computer\Agent-Intelligence-OS\.venv\Lib\site-packages\httpx\_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\My Computer\Agent-Intelligence-OS\.venv\Lib\site-packages\httpx\_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\My Computer\Agent-Intelligence-OS\.venv\Lib\site-packages\httpx\_transports\default.py", line 249, in handle_request
+    with map_httpcore_exceptions():
+  File "C:\Users\My Computer\AppData\Local\Programs\Python\Python311\Lib\contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "C:\Users\My Computer\Agent-Intelligence-OS\.venv\Lib\site-packages\httpx\_transports\default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: [Errno 11001] getaddrinfo failed
